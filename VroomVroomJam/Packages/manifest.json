@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "com.unity.entities.graphics": "1.4.18",
+    "com.unity.ide.rider": "3.0.39",
+    "com.unity.inputsystem": "1.18.0",
     "com.unity.multiplayer.center": "1.0.1",
     "com.unity.vehicles": "0.1.1-exp.1",
     "com.unity.modules.accessibility": "1.0.0",
