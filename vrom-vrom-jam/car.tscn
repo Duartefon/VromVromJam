@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dusm7gn888oei"]
+
+[ext_resource type="Script" uid="uid://bmfdqfac1v4ve" path="res://car.gd" id="1_uoj53"]
+[ext_resource type="PackedScene" uid="uid://no4p2i4rvveq" path="res://models/truck/truck.fbx" id="2_k61xc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_06lh1"]
+size = Vector3(1, 0.6485596, 1.3596802)
+
+[node name="CarBody" type="VehicleBody3D"]
+mass = 240.0
+script = ExtResource("1_uoj53")
+
+[node name="truck" parent="." instance=ExtResource("2_k61xc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0048704147, 0, 0.023554921)
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4071864, 0.31103632, 0.8717711)
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_radius = 0.32
+suspension_travel = 10.0
+suspension_stiffness = 40.0
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41668808, 0.3031901, 0.87586915)
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_radius = 0.32
+suspension_travel = 10.0
+suspension_stiffness = 40.0
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42523357, 0.30030754, -0.726881)
+use_as_traction = true
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3816111, 0.30713275, -0.66770875)
+use_as_traction = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0048704147, 0.66736376, 0.58730006)
+shape = SubResource("BoxShape3D_06lh1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0097408295, 0.48986125, -0.7760973)
+shape = SubResource("BoxShape3D_06lh1")
+
+[node name="CamArm" type="SpringArm3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CamArm"]
+
+[editable path="truck"]
