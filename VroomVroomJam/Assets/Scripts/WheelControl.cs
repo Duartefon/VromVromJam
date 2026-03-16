@@ -1,8 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class WheelControl : MonoBehaviour
 {
     public Transform wheelModel;
+    public float transitionSpeed = 20f;
 
     [HideInInspector] public WheelCollider WheelCollider;
 
@@ -27,7 +29,9 @@ public class WheelControl : MonoBehaviour
         // Get the Wheel collider's world pose values and
         // use them to set the wheel model's position and rotation
         WheelCollider.GetWorldPose(out position, out rotation);
-        wheelModel.transform.position = position;
-        wheelModel.transform.rotation = rotation;
+
+
+        wheelModel.transform.position = Vector3.Lerp(wheelModel.transform.position, position, Time.deltaTime * transitionSpeed);
+        wheelModel.transform.rotation = Quaternion.Slerp(wheelModel.transform.rotation, rotation, Time.deltaTime * transitionSpeed);
     }
 }
