@@ -9,8 +9,8 @@ public class CarControl : MonoBehaviour
     public float steeringRange = 30f;
     public float steeringRangeAtMaxSpeed = 10f;
     public float centreOfGravityOffset = -1f;
-    public float linearDamping = 1f // atrito
-    public float angularDamping = 2f
+    public float linearDamping = 1f; // atrito
+    public float angularDamping = 2f;
 
     private WheelControl[] wheels;
     private Rigidbody rigidBody;
@@ -37,8 +37,8 @@ public class CarControl : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         //Gabriel - adicionei drag para o carro nao escorregar para sempre
-        rigidBody.linearDamping = 0.5f;
-        rigidBody.angularDamping = 2f;
+        rigidBody.linearDamping = linearDamping;
+        rigidBody.angularDamping = angularDamping;
 
         // Adjust center of mass to improve stability and prevent rolling
         Vector3 centerOfMass = rigidBody.centerOfMass;
