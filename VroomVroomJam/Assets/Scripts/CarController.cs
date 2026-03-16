@@ -9,6 +9,8 @@ public class CarControl : MonoBehaviour
     public float steeringRange = 30f;
     public float steeringRangeAtMaxSpeed = 10f;
     public float centreOfGravityOffset = -1f;
+    public float linearDamping = 1f // atrito
+    public float angularDamping = 2f
 
     private WheelControl[] wheels;
     private Rigidbody rigidBody;
@@ -34,6 +36,10 @@ public class CarControl : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
 
+        //Gabriel - adicionei drag para o carro nao escorregar para sempre
+        rigidBody.linearDamping = 0.5f;
+        rigidBody.angularDamping = 2f;
+
         // Adjust center of mass to improve stability and prevent rolling
         Vector3 centerOfMass = rigidBody.centerOfMass;
         centerOfMass.y += centreOfGravityOffset;
@@ -41,6 +47,8 @@ public class CarControl : MonoBehaviour
 
         // Get all wheel components attached to the car
         wheels = GetComponentsInChildren<WheelControl>();
+        
+        SetupWheelFriction(); // adiciona fricção as rodas
     }
             
     // FixedUpdate is called at a fixed time interval
@@ -88,6 +96,22 @@ public class CarControl : MonoBehaviour
                 wheel.WheelCollider.motorTorque = 0f;
                 wheel.WheelCollider.brakeTorque = Mathf.Abs(vInput) * brakeTorque;
             }
+        }
+
+        
+    }
+
+    void SetupWheelFriction()
+    {
+        foreach (var wheel in wheels)
+        {
+            WheelFrictionCurve forwardFriction = wheel.WheelCollider.forwardFriction;
+            forwardFriction.stiffness = 2f;
+            wheel.WheelCollider.forwardFriction = forwardFriction;
+
+            WheelFrictionCurve sidewaysFriction = wheel.WheelCollider.sidewaysFriction;
+            sidewaysFriction.stiffness = 2f;
+            wheel.WheelCollider.sidewaysFriction = sidewaysFriction;
         }
     }
 }
