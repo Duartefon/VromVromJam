@@ -391,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
     BindingMode: 3
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0.3, y: 0.3, z: 0.3}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
@@ -1091,10 +1091,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelControl
   wheelModel: {fileID: 359841408}
-  transitionSpeed: 20
-  WheelCollider: {fileID: 0}
   steerable: 0
   motorized: 1
+  skidSmoke: {fileID: 0}
+  skidMark: {fileID: 0}
+  skidThreshold: 0.4
+  WheelCollider: {fileID: 0}
 --- !u!1 &748218600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,10 +1410,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelControl
   wheelModel: {fileID: 1226498233}
-  transitionSpeed: 20
-  WheelCollider: {fileID: 0}
   steerable: 0
   motorized: 1
+  skidSmoke: {fileID: 0}
+  skidMark: {fileID: 0}
+  skidThreshold: 0.4
+  WheelCollider: {fileID: 0}
 --- !u!1 &1031304315
 GameObject:
   m_ObjectHideFlags: 0
@@ -6852,10 +6856,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelControl
   wheelModel: {fileID: 1981628856}
-  transitionSpeed: 20
-  WheelCollider: {fileID: 0}
   steerable: 1
   motorized: 1
+  skidSmoke: {fileID: 0}
+  skidMark: {fileID: 0}
+  skidThreshold: 0.4
+  WheelCollider: {fileID: 0}
 --- !u!1 &1431581638
 GameObject:
   m_ObjectHideFlags: 0
@@ -7278,10 +7284,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelControl
   wheelModel: {fileID: 502298014}
-  transitionSpeed: 20
-  WheelCollider: {fileID: 0}
   steerable: 1
   motorized: 1
+  skidSmoke: {fileID: 0}
+  skidMark: {fileID: 0}
+  skidThreshold: 0.4
+  WheelCollider: {fileID: 0}
 --- !u!1 &1981628855
 GameObject:
   m_ObjectHideFlags: 0
@@ -7452,12 +7460,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarControl
   motorTorque: 2000
   brakeTorque: 2000
+  handbrakeTorque: 5000
   maxSpeed: 20
   steeringRange: 30
   steeringRangeAtMaxSpeed: 10
+  steerSmoothing: 5
   centreOfGravityOffset: -1
   linearDamping: 1
   angularDamping: 2
+  downforce: 50
+  forwardStiffness: 2
+  sidewaysStiffness: 2
+  brakeSidewaysStiffness: 2.5
 --- !u!114 &2099159699
 MonoBehaviour:
   m_ObjectHideFlags: 0

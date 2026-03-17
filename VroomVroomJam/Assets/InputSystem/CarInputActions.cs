@@ -118,6 +118,15 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Handbrake"",
+                    ""type"": ""Button"",
+                    ""id"": ""bcb6bbd2-8662-4b9c-a2fe-badefde2fa26"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,28 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcc50750-35ce-4945-9134-e254971d378c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Handbrake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5087176b-9916-449d-92c5-cfc82a709de7"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Handbrake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +294,7 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
         m_Car_Vertical = m_Car.FindAction("Vertical", throwIfNotFound: true);
         m_Car_Horizontal = m_Car.FindAction("Horizontal", throwIfNotFound: true);
         m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
+        m_Car_Handbrake = m_Car.FindAction("Handbrake", throwIfNotFound: true);
     }
 
     ~@CarInputActions()
@@ -346,6 +378,7 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Car_Vertical;
     private readonly InputAction m_Car_Horizontal;
     private readonly InputAction m_Car_Movement;
+    private readonly InputAction m_Car_Handbrake;
     /// <summary>
     /// Provides access to input actions defined in input action map "Car".
     /// </summary>
@@ -369,6 +402,10 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Car/Movement".
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_Car_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "Car/Handbrake".
+        /// </summary>
+        public InputAction @Handbrake => m_Wrapper.m_Car_Handbrake;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -404,6 +441,9 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Handbrake.started += instance.OnHandbrake;
+            @Handbrake.performed += instance.OnHandbrake;
+            @Handbrake.canceled += instance.OnHandbrake;
         }
 
         /// <summary>
@@ -424,6 +464,9 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Handbrake.started -= instance.OnHandbrake;
+            @Handbrake.performed -= instance.OnHandbrake;
+            @Handbrake.canceled -= instance.OnHandbrake;
         }
 
         /// <summary>
@@ -485,5 +528,12 @@ public partial class @CarInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Handbrake" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHandbrake(InputAction.CallbackContext context);
     }
 }

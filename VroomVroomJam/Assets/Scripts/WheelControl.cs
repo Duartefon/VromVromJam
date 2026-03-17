@@ -1,37 +1,65 @@
 using UnityEngine;
-using System.Collections;
 
 public class WheelControl : MonoBehaviour
 {
+    [Header("References")]
     public Transform wheelModel;
-    public float transitionSpeed = 20f;
 
-    [HideInInspector] public WheelCollider WheelCollider;
-
-    // Create properties for the CarControl script
-    // (You should enable/disable these via the 
-    // Editor Inspector window)
+    [Header("Settings")]
     public bool steerable;
     public bool motorized;
 
-    Vector3 position;
-    Quaternion rotation;
+    [Header("Effects")]
+    public ParticleSystem skidSmoke; // fumo a sair das rodas tipo areia e isso
+    public TrailRenderer skidMark;       // marca no chjaoi
+    public float skidThreshold = 0.4f;   // quando escorrega ativa o skidMArk
 
-    // Start is called before the first frame update
+    [HideInInspector] public WheelCollider WheelCollider;
+
     private void Start()
     {
         WheelCollider = GetComponent<WheelCollider>();
+
+        if (skidMark != null)
+            skidMark.emitting = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Get the Wheel collider's world pose values and
-        // use them to set the wheel model's position and rotation
-        WheelCollider.GetWorldPose(out position, out rotation);
+        WheelCollider.GetWorldPose(out Vector3 position, out Quaternion rotation);
+        wheelModel.position = position;
+        wheelModel.rotation = rotation;
 
+        HandleSkidEffects();
+    }
 
-        wheelModel.transform.position = Vector3.Lerp(wheelModel.transform.position, position, Time.deltaTime * transitionSpeed);
-        wheelModel.transform.rotation = Quaternion.Slerp(wheelModel.transform.rotation, rotation, Time.deltaTime * transitionSpeed);
+    void HandleSkidEffects()
+    {
+        if (skidSmoke == null && skidMark == null) return;
+
+        WheelHit hit;
+        bool grounded = WheelCollider.GetGroundHit(out hit);
+
+        // ~0 = grip, ~1 = full skid
+        bool isSkidding = grounded && Mathf.Abs(hit.sidewaysSlip) > skidThreshold;
+
+        if (skidSmoke != null)
+        {
+            if (isSkidding && !skidSmoke.isPlaying) skidSmoke.Play();
+            if (!isSkidding && skidSmoke.isPlaying) skidSmoke.Stop();
+        }
+
+        if (skidMark != null)
+            skidMark.emitting = isSkidding;
+    }
+
+    // para dbug
+    public void DrawGizmo()
+    {
+        if (WheelCollider == null) return;
+
+        WheelCollider.GetWorldPose(out Vector3 pos, out _);
+        Gizmos.color = WheelCollider.isGrounded ? Color.green : Color.red;
+        Gizmos.DrawWireSphere(pos, WheelCollider.radius);
     }
 }
