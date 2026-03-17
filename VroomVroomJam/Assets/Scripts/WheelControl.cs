@@ -20,7 +20,6 @@ public class WheelControl : MonoBehaviour
     {
         WheelCollider = GetComponent<WheelCollider>();
         skidSmoke = GetComponentInChildren<ParticleSystem>();
-        skidMark = GetComponentInChildren<TrailRenderer>();
 
         if (skidMark != null)
             skidMark.emitting = false;
@@ -32,6 +31,20 @@ public class WheelControl : MonoBehaviour
         wheelModel.position = position;
         wheelModel.rotation = rotation;
 
+        if (skidSmoke != null)
+        {
+            skidSmoke.transform.position = new Vector3(position.x, position.y - 0.2f, position.z);
+
+        }
+
+        // mete o trail no chao
+        if (skidMark != null)
+        {
+            WheelCollider.GetGroundHit(out WheelHit hit);
+            skidMark.transform.position = hit.point + Vector3.up * 0.02f;
+            skidMark.transform.rotation = Quaternion.identity;
+        }
+
         HandleSkidEffects();
     }
 
@@ -42,8 +55,20 @@ public class WheelControl : MonoBehaviour
         WheelHit hit;
         bool grounded = WheelCollider.GetGroundHit(out hit);
 
-        // ~0 = grip, ~1 = full skid
-        bool isSkidding = grounded && Mathf.Abs(hit.sidewaysSlip) > skidThreshold;
+        bool isSkidding;
+
+        if (motorized)
+        {
+            // back wheels - wheelspin e understeer
+            isSkidding = grounded && (
+                Mathf.Abs(hit.forwardSlip) > skidThreshold ||
+                Mathf.Abs(hit.sidewaysSlip) > skidThreshold);
+        }
+        else
+        {
+            // ffront wheels — undertseer
+            isSkidding = grounded && Mathf.Abs(hit.sidewaysSlip) > skidThreshold;
+        }
 
         if (skidSmoke != null)
         {
@@ -52,7 +77,7 @@ public class WheelControl : MonoBehaviour
         }
 
         if (skidMark != null)
-            skidMark.emitting = isSkidding;
+            skidMark.emitting = isSkidding && grounded;
     }
 
     // para dbug

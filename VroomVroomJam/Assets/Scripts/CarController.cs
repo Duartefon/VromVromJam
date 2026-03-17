@@ -109,7 +109,9 @@ public class CarControl : MonoBehaviour
             fwd.stiffness = forwardStiffness;
             wheel.WheelCollider.forwardFriction = fwd;
 
-            SetSidewaysStiffness(wheel, sidewaysStiffness);
+            
+            float sideways = wheel.steerable ? sidewaysStiffness * 1.2f : sidewaysStiffness;
+            SetSidewaysStiffness(wheel, sideways);
         }
     }
 
