@@ -19,6 +19,8 @@ public class WheelControl : MonoBehaviour
     private void Start()
     {
         WheelCollider = GetComponent<WheelCollider>();
+        skidSmoke = GetComponentInChildren<ParticleSystem>();
+        skidMark = GetComponentInChildren<TrailRenderer>();
 
         if (skidMark != null)
             skidMark.emitting = false;
