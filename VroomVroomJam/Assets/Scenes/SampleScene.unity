@@ -495,8 +495,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297331510}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13870122, y: 0, z: 0, w: 0.99033433}
-  m_LocalPosition: {x: -19.15092, y: 3.87, z: 46.6146}
+  m_LocalRotation: {x: 0, y: 0.9870875, z: -0.16018224, w: 0}
+  m_LocalPosition: {x: -19.15092, y: 3.87, z: 57.6146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6034,7 +6034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &661867706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6062,11 +6062,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
     BindingMode: 3
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0.3, y: 0.3, z: 0.3}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 2, z: 5}
+  FollowOffset: {x: 0, y: 2, z: 6}
 --- !u!114 &661867708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6118,8 +6118,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661867705}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.9819564, z: -0.18910754, w: 0}
-  m_LocalPosition: {x: -19.15092, y: 3.87, z: 56.6146}
+  m_LocalRotation: {x: 0, y: 0.9870875, z: -0.16018224, w: 0}
+  m_LocalPosition: {x: -19.15092, y: 3.87, z: 57.6146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11533,7 +11533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1031304316
 Transform:
   m_ObjectHideFlags: 0
@@ -26896,7 +26896,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1872794839
@@ -27388,7 +27388,7 @@ MonoBehaviour:
   centreOfGravityOffset: -1
   linearDamping: 1
   angularDamping: 2
-  downforce: 50
+  downforce: 20
   forwardStiffness: 2
   sidewaysStiffness: 2
   brakeSidewaysStiffness: 2.5
@@ -27430,6 +27430,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2340101898432709169, guid: fc642207895be7846a3ded4fa7295eea, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2657506393379355475, guid: fc642207895be7846a3ded4fa7295eea, type: 3}
       propertyPath: m_Name
       value: PizzaBox
