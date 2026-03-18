@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="367fbccc-c398-4893-b5be-345be233078c" name="Changes" comment="" />
+    <list default="true" id="367fbccc-c398-4893-b5be-345be233078c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VroomVroomJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VroomVroomJam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DuarteScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DuarteScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,7 +118,8 @@
       <workItem from="1773605240163" duration="247000" />
       <workItem from="1773605755910" duration="4643000" />
       <workItem from="1773624888853" duration="2699000" />
-      <workItem from="1773835065453" duration="373000" />
+      <workItem from="1773835065453" duration="1040000" />
+      <workItem from="1773852065423" duration="360000" />
     </task>
     <servers />
   </component>
