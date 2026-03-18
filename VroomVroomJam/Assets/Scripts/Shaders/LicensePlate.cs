@@ -5,15 +5,19 @@ public class LicensePlate : MonoBehaviour
 {
     public Renderer plateRenderer;
     public TMP_InputField inputField;
-
     private Material mat;
     private const string ATLAS_CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     void Start()
     {
+        plateRenderer = GameObject.Find("LicensePlate").GetComponent<Renderer>();
         mat = plateRenderer.material;
-        inputField.onValueChanged.AddListener(OnTextChanged);
-        inputField.characterLimit = 7;
+        if(inputField != null)
+        {
+            inputField.onValueChanged.AddListener(OnTextChanged);
+            inputField.characterLimit = 7;
+        }
+        
     }
 
     void OnTextChanged(string text)
