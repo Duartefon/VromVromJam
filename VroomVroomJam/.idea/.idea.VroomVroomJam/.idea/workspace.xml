@@ -14,10 +14,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities.graphics@0c58e11f3f42/Unity.Entities.Graphics/Deformations/Systems/PushMeshDataSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities.graphics@0c58e11f3f42/Unity.Entities.Graphics/EntitiesGraphicsSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@8b72e8a7d7d1/Unity.Entities.Hybrid/Baking/Baker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.vehicles@5fc686225b9c/Runtime/Authoring/VehicleAuthoring.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@37e0d4fc2503/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -116,6 +113,7 @@
       <workItem from="1773605240163" duration="247000" />
       <workItem from="1773605755910" duration="4643000" />
       <workItem from="1773624888853" duration="2699000" />
+      <workItem from="1773835065453" duration="373000" />
     </task>
     <servers />
   </component>
