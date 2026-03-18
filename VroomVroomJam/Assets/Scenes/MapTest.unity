@@ -580,6 +580,10 @@ PrefabInstance:
       propertyPath: downforce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 821502149465715229, guid: 1ab07053b8d8e4649bc4d2cfd51d1521, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2401810442431334220, guid: 1ab07053b8d8e4649bc4d2cfd51d1521, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.1
@@ -628,16 +632,56 @@ PrefabInstance:
       propertyPath: m_TagString
       value: LicensePlate
       objectReference: {fileID: 0}
+    - target: {fileID: 5274638315712875666, guid: 1ab07053b8d8e4649bc4d2cfd51d1521, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3287797682607224185, guid: 1ab07053b8d8e4649bc4d2cfd51d1521, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1908924568}
   m_SourcePrefab: {fileID: 100100000, guid: 1ab07053b8d8e4649bc4d2cfd51d1521, type: 3}
 --- !u!4 &1908924566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2401810442431334220, guid: 1ab07053b8d8e4649bc4d2cfd51d1521, type: 3}
   m_PrefabInstance: {fileID: 1908924565}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1908924567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3287797682607224185, guid: 1ab07053b8d8e4649bc4d2cfd51d1521, type: 3}
+  m_PrefabInstance: {fileID: 1908924565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1908924568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908924567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108c688c4199002439efda39c6c2d54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarControlllerWheel
+  motorTorque: 5000
+  brakeTorque: 3000
+  handbrakeTorque: 5000
+  maxSpeed: 120
+  steeringRange: 60
+  steeringRangeAtMaxSpeed: 20
+  steerSmoothing: 5
+  centreOfGravityOffset: -1
+  linearDamping: 1
+  angularDamping: 20
+  downforce: 25
+  forwardStiffness: 2
+  sidewaysStiffness: 2
+  brakeSidewaysStiffness: 2.5
+  wheelIndex: 0
+  handbrakeButton: 22
 --- !u!1001 &3665540213578992041
 PrefabInstance:
   m_ObjectHideFlags: 0
