@@ -62,13 +62,12 @@ public class CarControlllerWheel : MonoBehaviour
         hInput = Mathf.Abs(hInput) > 0.05f ? hInput : 0f; // dead zone
 
         // G29 pedals: 32767 = released, -32768 = fully pressed — so invert
-        float throttleRaw = 1f - (state.rglSlider[1] + 32768f) / 65535f;
+        float throttleRaw = 1f - (state.lY+32768f) / 65535f;
         float brakeRaw    = 1f - (state.rglSlider[0] + 32768f) / 65535f;
-
         float vInput = throttleRaw - brakeRaw;
 
         bool handbrake = state.rgbButtons[handbrakeButton] == 128;
-
+        Debug.Log($"Acceleration: {throttleRaw} hInput: {brakeRaw} Pedals: vInput: {vInput} stateAccPedal: {state.rglSlider[1]}");
         ApplyInputs(hInput, vInput, handbrake);
     }
 
