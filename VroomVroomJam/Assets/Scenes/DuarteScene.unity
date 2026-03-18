@@ -30192,6 +30192,7 @@ GameObject:
   - component: {fileID: 2099159697}
   - component: {fileID: 2099159696}
   - component: {fileID: 2099159698}
+  - component: {fileID: 2099159699}
   m_Layer: 0
   m_Name: CarRoot
   m_TagString: Player
@@ -30257,7 +30258,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099159694}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aa60c729460e5040ac6e27332ccc4ca, type: 3}
   m_Name: 
@@ -30276,6 +30277,34 @@ MonoBehaviour:
   forwardStiffness: 2
   sidewaysStiffness: 2
   brakeSidewaysStiffness: 2.5
+--- !u!114 &2099159699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099159694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108c688c4199002439efda39c6c2d54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarControlllerWheel
+  motorTorque: 2000
+  brakeTorque: 3000
+  handbrakeTorque: 5000
+  maxSpeed: 20
+  steeringRange: 30
+  steeringRangeAtMaxSpeed: 10
+  steerSmoothing: 5
+  centreOfGravityOffset: -1
+  linearDamping: 1
+  angularDamping: 2
+  downforce: 50
+  forwardStiffness: 2
+  sidewaysStiffness: 2
+  brakeSidewaysStiffness: 2.5
+  wheelIndex: 0
+  handbrakeButton: 22
 --- !u!1001 &1276291182515310334
 PrefabInstance:
   m_ObjectHideFlags: 0
