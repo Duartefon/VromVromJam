@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Missions
 {
@@ -21,19 +19,22 @@ namespace Missions
         {
             MissionEventBus.OnPlayerReachedPickup += HandlePickupZone;
             MissionEventBus.OnPlayerReachedDestination += HandleDestinationZone;
+            
+            // NEW: Listen for when an item is lost/destroyed
+            MissionEventBus.OnDeliverableLost += HandleDeliverableLost; 
         }
 
         private void OnDisable()
         {
             MissionEventBus.OnPlayerReachedPickup -= HandlePickupZone;
             MissionEventBus.OnPlayerReachedDestination -= HandleDestinationZone;
+            MissionEventBus.OnDeliverableLost -= HandleDeliverableLost;
         }
 
         public void Start()
         {
             LoadMission(currentMissionAsset);
         }
-
 
         // --- MISSION LOGIC --- 
         public void LoadMission(Mission mission)
@@ -58,12 +59,10 @@ namespace Missions
         {
             if (!isMissionActive) return;
 
-            // Check if this is the correct pickup zone for the current mission
             if (zoneID == currentMissionAsset.location.originID)
             {
                 Debug.Log("Correct Pickup Zone reached! Loading goods into the truck...");
              
-                // Change all Pending items to Collected
                 for (int i = 0; i < activeOrders.Count; i++)
                 {
                     if (activeOrders[i].state == DeliveryState.Pending)
@@ -73,28 +72,70 @@ namespace Missions
                         activeOrders[i] = order;
 
                         GameObject orderInstance = Instantiate(order.deliverableModel);
-
-                        orderInstance.transform.position = dropPosition.position + new Vector3(0,i * verticalOffsetBetweenItems,0) ;  
+                        orderInstance.transform.position = dropPosition.position + new Vector3(0, i * verticalOffsetBetweenItems, 0);
+                        
+                        // NEW: Tell the physical object which order it represents
+                        PhysicalDeliverable physicalScript = orderInstance.GetComponent<PhysicalDeliverable>();
+                        if (physicalScript != null)
+                        {
+                            physicalScript.orderIndex = i;
+                        }
                     }
                 }
-                
-            
                 Debug.Log($"Goods collected! Now head to: {currentMissionAsset.location.destinationID}");
             }
         }
 
-    
+        // NEW: Triggers when a box falls off the truck
+        private void HandleDeliverableLost(int index)
+        {
+            if (!isMissionActive || index < 0 || index >= activeOrders.Count) return;
+
+            Deliverable order = activeOrders[index];
+            
+            // Only mark it destroyed if it was currently in transit
+            if (order.state == DeliveryState.Collected)
+            {
+                order.state = DeliveryState.Destroyed;
+                activeOrders[index] = order;
+                Debug.Log($"Box {index} was lost on the road!");
+                
+                CheckForEarlyFailure();
+            }
+        }
+
+        private void CheckForEarlyFailure()
+        {
+            bool allDestroyed = true;
+            foreach (var order in activeOrders)
+            {
+                if (order.state != DeliveryState.Destroyed)
+                {
+                    allDestroyed = false;
+                    break;
+                }
+            }
+
+            // If we loop through everything and they are all destroyed, cancel the mission
+            if (allDestroyed)
+            {
+                Debug.Log("All goods were lost on the road!");
+                FailMission();
+            }
+        }
 
         private void HandleDestinationZone(string zoneID)
         {
             if (!isMissionActive) return;
 
-            // Check if this is the correct destination zone
             if (zoneID == currentMissionAsset.location.destinationID)
             {
                 Debug.Log("Correct Destination Zone reached! Offloading goods...");
 
-                // Change all Collected items to Delivered
+                float earnedReward = 0f;
+                int deliveredCount = 0;
+
+                // Only count items that are STILL 'Collected' (meaning they didn't fall out)
                 for (int i = 0; i < activeOrders.Count; i++)
                 {
                     if (activeOrders[i].state == DeliveryState.Collected)
@@ -102,43 +143,35 @@ namespace Missions
                         Deliverable order = activeOrders[i];
                         order.state = DeliveryState.Delivered;
                         activeOrders[i] = order;
+
+                        earnedReward += order.price;
+                        deliveredCount++;
                     }
                 }
 
-                CheckMissionProgress();
-            }
-        }
-
-        private void CheckMissionProgress()
-        {
-            bool allDelivered = true;
-
-            foreach (var order in activeOrders)
-            {
-                if (order.state == DeliveryState.Destroyed)
+                // If the player arrived with at least 1 item, they succeed partially
+                if (deliveredCount > 0)
                 {
+                    CompleteMission(earnedReward, deliveredCount);
+                }
+                else
+                {
+                    Debug.Log("You arrived at the destination, but the truck was empty!");
                     FailMission();
-                    return;
-                }
-                if (order.state != DeliveryState.Delivered)
-                {
-                    allDelivered = false;
                 }
             }
-
-            if (allDelivered) CompleteMission();
         }
 
-        private void CompleteMission()
+        private void CompleteMission(float finalReward, int amountDelivered)
         {
             isMissionActive = false;
-            Debug.Log($"Mission Complete! Earned ${currentMissionAsset.TotalReward}");
+            Debug.Log($"Mission Complete! Delivered {amountDelivered}/{activeOrders.Count} items. Earned ${finalReward}");
         }
 
         private void FailMission()
         {
             isMissionActive = false;
-            Debug.Log("Mission Failed! Goods were destroyed.");
+            Debug.Log("Mission Failed! You didn't deliver anything.");
         }
     }
 }

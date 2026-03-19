@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="367fbccc-c398-4893-b5be-345be233078c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VroomVroomJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VroomVroomJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Minecraftia-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Minecraftia-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Forest/Normal/Materials/ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Forest/Normal/Materials/ground.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DuarteScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DuarteScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MapTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MapTest.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Missions/MissionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Missions/MissionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/MissionEventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singletons/MissionEventBus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +21,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CarControllerWheel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Missions/PhysicalDeliverable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Singletons/MissionEventBus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@37e0d4fc2503/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -127,7 +127,7 @@
       <workItem from="1773835065453" duration="1040000" />
       <workItem from="1773852065423" duration="3050000" />
       <workItem from="1773943820710" duration="122000" />
-      <workItem from="1773944008359" duration="4978000" />
+      <workItem from="1773944008359" duration="6870000" />
     </task>
     <servers />
   </component>
