@@ -13,14 +13,15 @@ namespace Missions
         public float verticalOffsetBetweenItems = 2f;
 
         [SerializeField] private List<Deliverable> activeOrders = new List<Deliverable>();
+        
+        // NEW: Track the spawned physical GameObjects by their order index
+        private Dictionary<int, GameObject> spawnedDeliverables = new Dictionary<int, GameObject>();
 
         // --- EVENT BUS SUBSCRIPTIONS ---
         private void OnEnable()
         {
             MissionEventBus.OnPlayerReachedPickup += HandlePickupZone;
             MissionEventBus.OnPlayerReachedDestination += HandleDestinationZone;
-            
-            // NEW: Listen for when an item is lost/destroyed
             MissionEventBus.OnDeliverableLost += HandleDeliverableLost; 
         }
 
@@ -36,13 +37,13 @@ namespace Missions
             LoadMission(currentMissionAsset);
         }
 
-        // --- MISSION LOGIC --- 
         public void LoadMission(Mission mission)
         {
             if (isMissionActive) return;
 
             currentMissionAsset = mission;
             activeOrders.Clear();
+            spawnedDeliverables.Clear(); // Ensure the dictionary is empty on start
 
             foreach (var order in mission.ordersToBeDelivered)
             {
@@ -74,31 +75,32 @@ namespace Missions
                         GameObject orderInstance = Instantiate(order.deliverableModel);
                         orderInstance.transform.position = dropPosition.position + new Vector3(0, i * verticalOffsetBetweenItems, 0);
                         
-                        // NEW: Tell the physical object which order it represents
                         PhysicalDeliverable physicalScript = orderInstance.GetComponent<PhysicalDeliverable>();
                         if (physicalScript != null)
-                        {
-                            physicalScript.orderIndex = i;
-                        }
+                        physicalScript.orderIndex = i;
+                        
+
+                        spawnedDeliverables[i] = orderInstance;
                     }
                 }
                 Debug.Log($"Goods collected! Now head to: {currentMissionAsset.location.destinationID}");
             }
         }
 
-        // NEW: Triggers when a box falls off the truck
         private void HandleDeliverableLost(int index)
         {
             if (!isMissionActive || index < 0 || index >= activeOrders.Count) return;
 
             Deliverable order = activeOrders[index];
             
-            // Only mark it destroyed if it was currently in transit
             if (order.state == DeliveryState.Collected)
             {
                 order.state = DeliveryState.Destroyed;
                 activeOrders[index] = order;
                 Debug.Log($"Box {index} was lost on the road!");
+                
+                if (spawnedDeliverables.ContainsKey(index))
+                    spawnedDeliverables.Remove(index);
                 
                 CheckForEarlyFailure();
             }
@@ -115,8 +117,7 @@ namespace Missions
                     break;
                 }
             }
-
-            // If we loop through everything and they are all destroyed, cancel the mission
+           
             if (allDestroyed)
             {
                 Debug.Log("All goods were lost on the road!");
@@ -135,7 +136,6 @@ namespace Missions
                 float earnedReward = 0f;
                 int deliveredCount = 0;
 
-                // Only count items that are STILL 'Collected' (meaning they didn't fall out)
                 for (int i = 0; i < activeOrders.Count; i++)
                 {
                     if (activeOrders[i].state == DeliveryState.Collected)
@@ -146,14 +146,17 @@ namespace Missions
 
                         earnedReward += order.price;
                         deliveredCount++;
+
+                        if (spawnedDeliverables.ContainsKey(i))
+                        {
+                            Destroy(spawnedDeliverables[i]);
+                            spawnedDeliverables.Remove(i);
+                        }
                     }
                 }
 
-                // If the player arrived with at least 1 item, they succeed partially
                 if (deliveredCount > 0)
-                {
                     CompleteMission(earnedReward, deliveredCount);
-                }
                 else
                 {
                     Debug.Log("You arrived at the destination, but the truck was empty!");
@@ -172,6 +175,12 @@ namespace Missions
         {
             isMissionActive = false;
             Debug.Log("Mission Failed! You didn't deliver anything.");
+            
+            foreach (var item in spawnedDeliverables.Values)
+            {
+                if (item != null) Destroy(item);
+            }
+            spawnedDeliverables.Clear();
         }
     }
 }

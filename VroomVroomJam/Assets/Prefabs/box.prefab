@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f31134dbe2c5e0f46a357f35742a248c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.406916
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f31134dbe2c5e0f46a357f35742a248c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03787045
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f31134dbe2c5e0f46a357f35742a248c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 73.1654
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f31134dbe2c5e0f46a357f35742a248c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,7 +65,7 @@ PrefabInstance:
       addedObject: {fileID: 4748927484362139090}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f31134dbe2c5e0f46a357f35742a248c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4234492778055046516}
+      addedObject: {fileID: 6584770979008518099}
   m_SourcePrefab: {fileID: 100100000, guid: f31134dbe2c5e0f46a357f35742a248c, type: 3}
 --- !u!1 &9085235712674300547 stripped
 GameObject:
@@ -93,30 +93,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5000001, z: 0.5000001}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4234492778055046516
-Rigidbody:
+--- !u!65 &6584770979008518099
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9085235712674300547}
-  serializedVersion: 5
-  m_Mass: 5
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.5000001}
+  m_Center: {x: 0, y: 0, z: 0}

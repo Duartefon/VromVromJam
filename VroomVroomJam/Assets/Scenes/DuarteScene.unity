@@ -758,7 +758,7 @@ Transform:
   m_GameObject: {fileID: 269941939}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25666794, y: 0, z: 0, w: 0.9664997}
-  m_LocalPosition: {x: -19.15092, y: 5.87, z: 46.6146}
+  m_LocalPosition: {x: -29.15092, y: 5.87, z: 57.3646}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -976,7 +976,7 @@ Transform:
   m_GameObject: {fileID: 297331510}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25666794, y: 0, z: 0, w: 0.9664997}
-  m_LocalPosition: {x: -19.15092, y: 5.87, z: 46.6146}
+  m_LocalPosition: {x: -29.15092, y: 5.87, z: 57.3646}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryZone
   zoneType: 1
-  zoneID: ' '
+  zoneID: deliver1
   requiredStopTime: 1
   stopSpeedThreshold: 0.5
 --- !u!65 &348938130
@@ -3159,7 +3159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryZone
   zoneType: 0
-  zoneID: entrega1
+  zoneID: pickup1
   requiredStopTime: 1
   stopSpeedThreshold: 0.5
 --- !u!1 &1044783793 stripped
@@ -5206,7 +5206,7 @@ GameObject:
   - component: {fileID: 1872794838}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5765,7 +5765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2299695667617040249, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.15092
+      value: -29.15092
       objectReference: {fileID: 0}
     - target: {fileID: 2299695667617040249, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5773,7 +5773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2299695667617040249, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.6146
+      value: 62.3646
       objectReference: {fileID: 0}
     - target: {fileID: 2299695667617040249, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_LocalRotation.w

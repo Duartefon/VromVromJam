@@ -80,6 +80,7 @@ namespace Missions
             }
             else if (zoneType == ZoneType.Destination)
             {
+                Debug.Log("Cheguei aqui");
                 MissionEventBus.RaisePlayerReachedDestination(zoneID);
             }
         }

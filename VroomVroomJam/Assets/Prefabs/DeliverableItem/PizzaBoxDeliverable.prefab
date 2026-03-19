@@ -52,7 +52,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2340101898432709169, guid: fc642207895be7846a3ded4fa7295eea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -144,7 +145,8 @@ PrefabInstance:
       value: PizzaBoxDeliverable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7553967555354885066, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2430819790960734913, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
       insertIndex: -1
