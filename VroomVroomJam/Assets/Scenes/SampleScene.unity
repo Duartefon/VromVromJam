@@ -1298,6 +1298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558040912}
+  - component: {fileID: 558040913}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1326,6 +1327,18 @@ RectTransform:
   m_AnchoredPosition: {x: -402.7, y: 479}
   m_SizeDelta: {x: 746.9, y: 261.43}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &558040913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558040911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c57090ae5b2f75499ab7a02151b9b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HUDManager
 --- !u!1 &598015839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,6 +1537,7 @@ GameObject:
   - component: {fileID: 839909667}
   - component: {fileID: 839909666}
   - component: {fileID: 839909668}
+  - component: {fileID: 839909669}
   m_Layer: 0
   m_Name: MissionController
   m_TagString: Untagged
@@ -1661,6 +1675,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &839909669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839909665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e8a9e826249464380918b24038222f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Missions.MissionManager
+  currentMissionAsset: {fileID: 11400000, guid: c1726908a7546ae4f88c261232ba6f10, type: 2}
+  isMissionActive: 0
+  dropPosition: {fileID: 1484127122}
+  verticalOffsetBetweenItems: 1.5
+  timer: {fileID: 839909666}
+  activeOrders: []
 --- !u!1 &840469310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,56 +2643,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1192690845
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1192690846}
-  - component: {fileID: 1192690847}
-  m_Layer: 0
-  m_Name: MissionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1192690846
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192690845}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1523833378}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1192690847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192690845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e8a9e826249464380918b24038222f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Missions.MissionManager
-  currentMissionAsset: {fileID: 11400000, guid: c1726908a7546ae4f88c261232ba6f10, type: 2}
-  isMissionActive: 0
-  dropPosition: {fileID: 1484127122}
-  verticalOffsetBetweenItems: 1.5
-  timer: {fileID: 839909666}
-  activeOrders: []
 --- !u!1001 &1212384270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3356,38 +3338,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1523833377
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1523833378}
-  m_Layer: 0
-  m_Name: Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1523833378
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523833377}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.79583, y: 0.03787, z: 67.49419}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1192690846}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1596094303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4408,6 +4358,5 @@ SceneRoots:
   - {fileID: 1066752993}
   - {fileID: 1070072514}
   - {fileID: 1061868192}
-  - {fileID: 1523833378}
   - {fileID: 1048761530}
   - {fileID: 1674803740}
