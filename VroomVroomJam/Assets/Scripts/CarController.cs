@@ -6,7 +6,7 @@ public class CarControl : MonoBehaviour
     public float motorTorque = 2000f;
     public float brakeTorque = 3000f;
     public float handbrakeTorque = 5000f;
-    public float maxSpeed = 20f;
+    public float maxSpeed = 80f;
     public float engineBraking = 0.3f; // drag when coasting
 
     [Header("Air Control")]
@@ -32,10 +32,13 @@ public class CarControl : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource engineAudio;
+    public AudioSource impactAudio;
+    public AudioClip[] impactClips;
     public float minPitch = 0.5f;
     public float maxPitch = 2.5f;
     public float minVolume = 0.4f;
     public float maxVolume = 1f;
+    public float impactThreshold = 10f;
 
     private WheelControl[] wheels;
     private Rigidbody rigidBody;
@@ -190,5 +193,19 @@ public class CarControl : MonoBehaviour
         if (wheels == null) return;
         foreach (var wheel in wheels)
             wheel.DrawGizmo();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        float impactForce = collision.relativeVelocity.magnitude;
+
+        if (impactForce < impactThreshold) return;
+        if (impactClips.Length > 0)
+            impactAudio.clip = impactClips[Random.Range(0, impactClips.Length)];
+
+        // pitch and volume scale with impact force
+        impactAudio.pitch = Random.Range(0.9f, 1.1f);
+        impactAudio.volume = Mathf.Clamp01(impactForce / 20f);
+        impactAudio.Play();
     }
 }
