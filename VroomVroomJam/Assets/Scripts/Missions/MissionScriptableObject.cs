@@ -9,6 +9,7 @@ namespace Missions
     {
         public string missionName = "Unnamed Fetch Quest";
         public MissionLocation location;
+        public float duration;
     
         [Tooltip("The list of items the player must deliver.")]
         public List<Deliverable> ordersToBeDelivered;

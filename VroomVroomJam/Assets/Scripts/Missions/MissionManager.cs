@@ -12,6 +12,9 @@ namespace Missions
         public Transform dropPosition;
         public float verticalOffsetBetweenItems = 2f;
 
+        [Header("Timer")]
+        public Timer timer;
+
         [SerializeField] private List<Deliverable> activeOrders = new List<Deliverable>();
         
         // NEW: Track the spawned physical GameObjects by their order index
@@ -53,7 +56,15 @@ namespace Missions
             }
 
             isMissionActive = true;
-            Debug.Log($"Mission Loaded. Head to Pickup Zone: {mission.location.originID}");
+
+            if (timer != null)
+            {
+                timer.duration = mission.duration;
+                timer.OnTimerComplete += HandleTimerExpired;
+                timer.StartTimer();
+            }
+
+            Debug.Log($"Mission Loaded: {mission.missionName} | Time Limit: {mission.duration}s | Head to: {mission.location.originID}");
         }
 
         private void HandlePickupZone(string zoneID)
@@ -168,7 +179,8 @@ namespace Missions
         private void CompleteMission(float finalReward, int amountDelivered)
         {
             isMissionActive = false;
-            Debug.Log($"Mission Complete! Delivered {amountDelivered}/{activeOrders.Count} items. Earned ${finalReward}");
+            StopTimer();
+            Debug.Log($"Mission Complete! Earned ${currentMissionAsset.TotalReward}");
         }
 
         private void FailMission()
@@ -181,6 +193,25 @@ namespace Missions
                 if (item != null) Destroy(item);
             }
             spawnedDeliverables.Clear();
+            StopTimer();
+            Debug.Log("Mission Failed! Goods were destroyed.");
+        }
+
+        // --- TIMER HELPERS ---
+        private void HandleTimerExpired()
+        {
+            if (!isMissionActive) return;
+            FailMission();
+            Debug.Log("Mission Failed! Ran out of time.");
+        }
+
+        private void StopTimer()
+        {
+            if (timer != null)
+            {
+                timer.OnTimerComplete -= HandleTimerExpired;
+                timer.StopTimer();
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Timer : MonoBehaviour
     public Color middleColor = new Color(1f, 0.5f, 0f);
     public Color endColor = Color.red;
     public AudioClip warningClip;
+
+    public event Action OnTimerComplete;
 
     private float elapsed;
     private bool running;
@@ -46,7 +49,7 @@ public class Timer : MonoBehaviour
         if (elapsed >= duration)
         {
             running = false;
-            OnTimerComplete();
+            HandleTimerEnd();
         }
     }
 
@@ -59,8 +62,14 @@ public class Timer : MonoBehaviour
         timerFill.color = startColor;
     }
 
-    private void OnTimerComplete()
+    public void StopTimer()
+    {
+        running = false;
+    }
+
+    private void HandleTimerEnd()
     {
         Debug.Log("BOOM!");
+        OnTimerComplete?.Invoke();
     }
 }

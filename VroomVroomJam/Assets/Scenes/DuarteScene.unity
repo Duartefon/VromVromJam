@@ -199,6 +199,7 @@ MonoBehaviour:
   isMissionActive: 0
   dropPosition: {fileID: 1033680451}
   verticalOffsetBetweenItems: 1.5
+  timer: {fileID: 0}
   activeOrders: []
 --- !u!1001 &7003703
 PrefabInstance:
@@ -3001,37 +3002,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1105729964758264073, guid: 8ed272bc1def3b443bb7f718bcab070b, type: 3}
---- !u!1 &1033680450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1033680451}
-  m_Layer: 0
-  m_Name: DeliveriablesDrop
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1033680451
+--- !u!4 &1033680451 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4247301853981997509, guid: 3fec159409243044ca96ff385253039e, type: 3}
+  m_PrefabInstance: {fileID: 7561827779653162612}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033680450}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 5, z: -1.079}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2099159697}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1037709857
 GameObject:
   m_ObjectHideFlags: 0
@@ -5759,10 +5734,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 211173161662232817, guid: 3fec159409243044ca96ff385253039e, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 2299695667617040249, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -29.15092
@@ -5809,10 +5780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2299695667617040249, guid: 3fec159409243044ca96ff385253039e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1033680451}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fec159409243044ca96ff385253039e, type: 3}
 --- !u!1660057539 &9223372036854775807

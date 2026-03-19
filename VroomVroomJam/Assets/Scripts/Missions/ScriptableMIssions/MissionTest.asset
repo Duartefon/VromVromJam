@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Missions.Mission
   missionName: Unnamed Fetch Quest
   location:
-    originID: pickup1
-    destinationID: deliver1
+    originID: entrega1
+    destinationID: 
+  duration: 120
   ordersToBeDelivered:
   - itemType: 0
-    price: 4.93
+    price: 100
     state: 0
-    deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
-  - itemType: 0
-    price: 4.93
+    deliverableModel: {fileID: 2657506393379355475, guid: fc642207895be7846a3ded4fa7295eea, type: 3}
+  - itemType: 1
+    price: 200
     state: 0
     deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
   - itemType: 1
