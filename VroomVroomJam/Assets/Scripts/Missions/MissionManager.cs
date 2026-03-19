@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Singletons;
 using UnityEngine;
 
 namespace Missions
@@ -88,7 +89,7 @@ namespace Missions
                         
                         PhysicalDeliverable physicalScript = orderInstance.GetComponent<PhysicalDeliverable>();
                         if (physicalScript != null)
-                        physicalScript.orderIndex = i;
+                            physicalScript.orderIndex = i;
                         
 
                         spawnedDeliverables[i] = orderInstance;

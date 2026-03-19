@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="367fbccc-c398-4893-b5be-345be233078c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VroomVroomJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VroomVroomJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DeliverableItem/BoxDeliverable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DeliverableItem/BoxDeliverable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DeliverableItem/Deliverable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DeliverableItem/Deliverable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DeliverableItem/PizzaBoxDeliverable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DeliverableItem/PizzaBoxDeliverable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/box.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Minecraftia-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Minecraftia-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DuarteScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DuarteScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Missions/DeliveryZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Missions/DeliveryZone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Missions/MissionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Missions/MissionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Missions/PhysicalDeliverable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Missions/PhysicalDeliverable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Missions/ScriptableMIssions/MissionTest.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Missions/ScriptableMIssions/MissionTest.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/MissionEventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singletons/MissionEventBus.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +130,7 @@
       <workItem from="1773835065453" duration="1040000" />
       <workItem from="1773852065423" duration="3050000" />
       <workItem from="1773943820710" duration="122000" />
-      <workItem from="1773944008359" duration="7993000" />
+      <workItem from="1773944008359" duration="8985000" />
     </task>
     <servers />
   </component>
