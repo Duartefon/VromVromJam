@@ -428,7 +428,7 @@ MonoBehaviour:
   motorized: 1
   skidSmoke: {fileID: 0}
   skidMark: {fileID: 6666284505951577964}
-  skidThreshold: 0.4
+  skidThreshold: 0.99
   WheelCollider: {fileID: 0}
 --- !u!1 &1210959112083452112
 GameObject:
@@ -5346,7 +5346,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 10000
     damper: 5000
-    targetPosition: 0.5
+    targetPosition: 0.62
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -5389,7 +5389,7 @@ MonoBehaviour:
   motorized: 1
   skidSmoke: {fileID: 0}
   skidMark: {fileID: 1728764622290263047}
-  skidThreshold: 0.8
+  skidThreshold: 0.99
   WheelCollider: {fileID: 0}
 --- !u!1 &3155469272526271463
 GameObject:
@@ -5407,7 +5407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7762348173268246478
 Transform:
   m_ObjectHideFlags: 0
@@ -5416,13 +5416,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3155469272526271463}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2299695667617040249}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!96 &786051688155061993
 TrailRenderer:
   serializedVersion: 4
@@ -5449,7 +5449,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 6a106b8b6bcf93048b5666fa5e0c067a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5472,7 +5472,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 0.5
+  m_Time: 10
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -5482,7 +5482,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.25
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5525,7 +5525,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 1
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -5624,7 +5624,7 @@ MonoBehaviour:
   motorized: 1
   skidSmoke: {fileID: 0}
   skidMark: {fileID: 786051688155061993}
-  skidThreshold: 0.4
+  skidThreshold: 0.99
   WheelCollider: {fileID: 0}
 --- !u!1 &3898800381045646952
 GameObject:
@@ -5642,7 +5642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5410082855850933104
 Transform:
   m_ObjectHideFlags: 0
@@ -5651,13 +5651,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3898800381045646952}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2299695667617040249}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!96 &6920169733580610234
 TrailRenderer:
   serializedVersion: 4
@@ -5684,7 +5684,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 6a106b8b6bcf93048b5666fa5e0c067a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5707,7 +5707,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 0.5
+  m_Time: 10
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -5717,7 +5717,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.25
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5760,7 +5760,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 1
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -15750,7 +15750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7515558513393958894
 Transform:
   m_ObjectHideFlags: 0
@@ -15759,13 +15759,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6510873076983264869}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2299695667617040249}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!96 &1728764622290263047
 TrailRenderer:
   serializedVersion: 4
@@ -15792,7 +15792,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 6a106b8b6bcf93048b5666fa5e0c067a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15815,7 +15815,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 0.5
+  m_Time: 10
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -15825,7 +15825,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.25
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -15868,7 +15868,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 1
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -15962,6 +15962,9 @@ MonoBehaviour:
   brakeTorque: 2000
   handbrakeTorque: 5000
   maxSpeed: 80
+  engineBraking: 0.3
+  airAngularDrag: 0.5
+  jumpStabilization: 2
   steeringRange: 45
   steeringRangeAtMaxSpeed: 10
   steerSmoothing: 1.9
@@ -15972,6 +15975,15 @@ MonoBehaviour:
   forwardStiffness: 2
   sidewaysStiffness: 2
   brakeSidewaysStiffness: 2.5
+  engineAudio: {fileID: 0}
+  impactAudio: {fileID: 0}
+  impactClips:
+  - {fileID: 8300000, guid: 0c97661aafaabfe42b14aef60093e964, type: 3}
+  minPitch: 0.5
+  maxPitch: 2.5
+  minVolume: 0.4
+  maxVolume: 1
+  impactThreshold: 5
 --- !u!114 &4379797491191527660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16016,7 +16028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1225461607329268041
 Transform:
   m_ObjectHideFlags: 0
@@ -16025,13 +16037,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6861712029397935802}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2299695667617040249}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!96 &6666284505951577964
 TrailRenderer:
   serializedVersion: 4
@@ -16058,7 +16070,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 6a106b8b6bcf93048b5666fa5e0c067a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16081,7 +16093,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 0.5
+  m_Time: 10
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -16091,7 +16103,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.25
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -16134,7 +16146,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 1
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -16190,7 +16202,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 10000
     damper: 5000
-    targetPosition: 0.5
+    targetPosition: 0.62
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -16233,7 +16245,7 @@ MonoBehaviour:
   motorized: 1
   skidSmoke: {fileID: 0}
   skidMark: {fileID: 6920169733580610234}
-  skidThreshold: 0.8
+  skidThreshold: 0.99
   WheelCollider: {fileID: 0}
 --- !u!1 &7883100075316165431
 GameObject:
