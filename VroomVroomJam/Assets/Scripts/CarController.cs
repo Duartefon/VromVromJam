@@ -30,6 +30,13 @@ public class CarControl : MonoBehaviour
     public float sidewaysStiffness = 2f;
     public float brakeSidewaysStiffness = 2.5f;
 
+    [Header("Audio")]
+    public AudioSource engineAudio;
+    public float minPitch = 0.5f;
+    public float maxPitch = 2.5f;
+    public float minVolume = 0.4f;
+    public float maxVolume = 1f;
+
     private WheelControl[] wheels;
     private Rigidbody rigidBody;
     private CarInputActions carControls;
@@ -134,6 +141,27 @@ public class CarControl : MonoBehaviour
                 SetSidewaysStiffness(wheel, sidewaysStiffness);
             }
         }
+    }
+
+    void Update()
+    {
+        UpdateEngineAudio();
+    }
+
+    void UpdateEngineAudio()
+    {
+        float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(
+            Vector3.Dot(transform.forward, rigidBody.linearVelocity)));
+
+        // blend pitch between idle and max based on speed and throttle
+        float targetPitch = Mathf.Lerp(minPitch, maxPitch,
+            Mathf.Max(speedFactor, Mathf.Abs(carControls.Car.Movement.ReadValue<Vector2>().y)));
+
+        engineAudio.pitch = Mathf.Lerp(engineAudio.pitch, targetPitch, Time.deltaTime * 5f);
+        engineAudio.volume = Mathf.Lerp(minVolume, maxVolume, speedFactor);
+
+        if (!engineAudio.isPlaying)
+            engineAudio.Play();
     }
 
     void SetupWheelFriction()
