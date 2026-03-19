@@ -14,6 +14,9 @@ namespace Missions
         public Transform dropPosition;
         public float verticalOffsetBetweenItems = 2f;
 
+        [Header("Timer")]
+        public Timer timer;
+
         [SerializeField] private List<Deliverable> activeOrders = new List<Deliverable>();
 
         // --- EVENT BUS SUBSCRIPTIONS ---
@@ -51,19 +54,25 @@ namespace Missions
             }
 
             isMissionActive = true;
-            Debug.Log($"Mission Loaded. Head to Pickup Zone: {mission.location.originID}");
+
+            if (timer != null)
+            {
+                timer.duration = mission.duration;
+                timer.OnTimerComplete += HandleTimerExpired;
+                timer.StartTimer();
+            }
+
+            Debug.Log($"Mission Loaded: {mission.missionName} | Time Limit: {mission.duration}s | Head to: {mission.location.originID}");
         }
 
         private void HandlePickupZone(string zoneID)
         {
             if (!isMissionActive) return;
 
-            // Check if this is the correct pickup zone for the current mission
             if (zoneID == currentMissionAsset.location.originID)
             {
                 Debug.Log("Correct Pickup Zone reached! Loading goods into the truck...");
-             
-                // Change all Pending items to Collected
+
                 for (int i = 0; i < activeOrders.Count; i++)
                 {
                     if (activeOrders[i].state == DeliveryState.Pending)
@@ -73,28 +82,22 @@ namespace Missions
                         activeOrders[i] = order;
 
                         GameObject orderInstance = Instantiate(order.deliverableModel);
-
-                        orderInstance.transform.position = dropPosition.position + new Vector3(0,i * verticalOffsetBetweenItems,0) ;  
+                        orderInstance.transform.position = dropPosition.position + new Vector3(0, i * verticalOffsetBetweenItems, 0);
                     }
                 }
-                
-            
+
                 Debug.Log($"Goods collected! Now head to: {currentMissionAsset.location.destinationID}");
             }
         }
-
-    
 
         private void HandleDestinationZone(string zoneID)
         {
             if (!isMissionActive) return;
 
-            // Check if this is the correct destination zone
             if (zoneID == currentMissionAsset.location.destinationID)
             {
                 Debug.Log("Correct Destination Zone reached! Offloading goods...");
 
-                // Change all Collected items to Delivered
                 for (int i = 0; i < activeOrders.Count; i++)
                 {
                     if (activeOrders[i].state == DeliveryState.Collected)
@@ -132,13 +135,32 @@ namespace Missions
         private void CompleteMission()
         {
             isMissionActive = false;
+            StopTimer();
             Debug.Log($"Mission Complete! Earned ${currentMissionAsset.TotalReward}");
         }
 
         private void FailMission()
         {
             isMissionActive = false;
+            StopTimer();
             Debug.Log("Mission Failed! Goods were destroyed.");
+        }
+
+        // --- TIMER HELPERS ---
+        private void HandleTimerExpired()
+        {
+            if (!isMissionActive) return;
+            FailMission();
+            Debug.Log("Mission Failed! Ran out of time.");
+        }
+
+        private void StopTimer()
+        {
+            if (timer != null)
+            {
+                timer.OnTimerComplete -= HandleTimerExpired;
+                timer.StopTimer();
+            }
         }
     }
 }

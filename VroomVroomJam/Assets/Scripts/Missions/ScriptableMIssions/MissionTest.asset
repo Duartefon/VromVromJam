@@ -16,12 +16,13 @@ MonoBehaviour:
   location:
     originID: entrega1
     destinationID: 
+  duration: 120
   ordersToBeDelivered:
   - itemType: 0
-    price: 4.93
+    price: 100
     state: 0
     deliverableModel: {fileID: 2657506393379355475, guid: fc642207895be7846a3ded4fa7295eea, type: 3}
   - itemType: 1
-    price: 7.77
+    price: 200
     state: 0
     deliverableModel: {fileID: 9085235712674300547, guid: 77e23f1d15cb16a4da7ef88d79b7154b, type: 3}
