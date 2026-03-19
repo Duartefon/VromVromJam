@@ -197,7 +197,6 @@ public class CarControl : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        return;
         float impactForce = collision.relativeVelocity.magnitude;
 
         if (impactForce < impactThreshold) return;

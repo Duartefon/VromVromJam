@@ -1,3 +1,4 @@
+using Missions;
 using UnityEngine;
 using TMPro;
 
@@ -15,7 +16,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        titleText.text = missionManager.mission.missionName;
-        payText.text = missionManager.mission.TotalReward;
+        titleText.text = missionManager.currentMissionAsset.missionName;
+        payText.text = $"{missionManager.currentMissionAsset.TotalReward}";
     }
 }
