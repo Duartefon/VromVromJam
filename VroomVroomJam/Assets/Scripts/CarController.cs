@@ -145,7 +145,7 @@ public class CarControl : MonoBehaviour
 
     void Update()
     {
-        UpdateEngineAudio();
+      //  UpdateEngineAudio(); //TODO: Audio should be a seperate Script
     }
 
     void UpdateEngineAudio()
