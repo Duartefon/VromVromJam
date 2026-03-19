@@ -7,6 +7,12 @@ public class CarControl : MonoBehaviour
     public float brakeTorque = 3000f;
     public float handbrakeTorque = 5000f;
     public float maxSpeed = 20f;
+    public float engineBraking = 0.3f; // drag when coasting
+
+    [Header("Air Control")]
+    public float airAngularDrag = 0.5f;
+    public float jumpStabilization = 2f;
+    
 
     [Header("Steering")]
     public float steeringRange = 30f;
@@ -50,7 +56,7 @@ public class CarControl : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 input = carControls.Car.Movement.ReadValue<Vector2>();
-        bool handbrake = carControls.Car.Handbrake.IsPressed(); // trvao de mao para drifts
+        bool handbrake = carControls.Car.Handbrake.IsPressed();
 
         float vInput = input.y;
         float hInput = input.x;
@@ -64,17 +70,36 @@ public class CarControl : MonoBehaviour
         currentSteerAngle = Mathf.Lerp(currentSteerAngle, targetSteerAngle,
                                         steerSmoothing * Time.fixedDeltaTime);
 
-        // downforce
         rigidBody.AddForce(-transform.up * downforce * rigidBody.linearVelocity.sqrMagnitude);
 
-        bool isBraking = vInput == 0f || Mathf.Sign(vInput) != Mathf.Sign(forwardSpeed);
+        // check how many wheels are grounded
+        int groundedWheels = 0;
+        foreach (var wheel in wheels)
+            if (wheel.WheelCollider.isGrounded) groundedWheels++;
+
+        bool isAirborne = groundedWheels == 0;
+
+        if (isAirborne)
+        {
+            // stabilize the car in the air so it lands flat
+            Quaternion targetRot = Quaternion.FromToRotation(transform.up, Vector3.up) * transform.rotation;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot,
+                                                   jumpStabilization * Time.fixedDeltaTime);
+            rigidBody.angularDamping = airAngularDrag;
+        }
+        else
+        {
+            rigidBody.angularDamping = angularDamping;
+        }
+
+        bool isBraking = Mathf.Abs(forwardSpeed) > 0.5f &&
+                 (vInput == 0f || Mathf.Sign(vInput) != Mathf.Sign(forwardSpeed));
 
         foreach (var wheel in wheels)
         {
             if (wheel.steerable)
                 wheel.WheelCollider.steerAngle = currentSteerAngle;
 
-            // ainda ta meio bugado
             if (handbrake && !wheel.steerable)
             {
                 wheel.WheelCollider.motorTorque = 0f;
@@ -88,14 +113,24 @@ public class CarControl : MonoBehaviour
                 wheel.WheelCollider.motorTorque = 0f;
                 wheel.WheelCollider.brakeTorque = Mathf.Abs(vInput) > 0.1f
                     ? Mathf.Abs(vInput) * brakeTorque
-                    : brakeTorque * 0.1f;
+                    : 0f;
                 SetSidewaysStiffness(wheel, brakeSidewaysStiffness);
             }
             else
             {
                 if (wheel.motorized)
                     wheel.WheelCollider.motorTorque = vInput * currentMotorTorque;
-                wheel.WheelCollider.brakeTorque = 0f;
+
+                // engine braking when coasting
+                if (vInput == 0f && wheel.motorized)
+                {
+                    wheel.WheelCollider.brakeTorque = engineBraking * brakeTorque;
+                }
+                else
+                {
+                    wheel.WheelCollider.brakeTorque = 0f;
+                }
+
                 SetSidewaysStiffness(wheel, sidewaysStiffness);
             }
         }

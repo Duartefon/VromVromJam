@@ -92,7 +92,8 @@ public class CarControlllerWheel : MonoBehaviour
 
         rigidBody.AddForce(-transform.up * downforce * rigidBody.linearVelocity.sqrMagnitude);
 
-        bool isBraking = vInput == 0f || Mathf.Sign(vInput) != Mathf.Sign(forwardSpeed);
+        bool isBraking = Mathf.Abs(forwardSpeed) > 0.5f &&
+                 (vInput == 0f || Mathf.Sign(vInput) != Mathf.Sign(forwardSpeed));
 
         foreach (var wheel in wheels)
         {
@@ -112,14 +113,15 @@ public class CarControlllerWheel : MonoBehaviour
                 wheel.WheelCollider.motorTorque = 0f;
                 wheel.WheelCollider.brakeTorque = Mathf.Abs(vInput) > 0.1f
                     ? Mathf.Abs(vInput) * brakeTorque
-                    : brakeTorque * 0.1f;
+                    : 0f;
                 SetSidewaysStiffness(wheel, brakeSidewaysStiffness);
             }
             else
             {
                 if (wheel.motorized)
                     wheel.WheelCollider.motorTorque = vInput * currentMotorTorque;
-                wheel.WheelCollider.brakeTorque = 0f;
+
+                wheel.WheelCollider.brakeTorque = Mathf.Abs(forwardSpeed) < 0.5f ? 0f : 0f;
                 SetSidewaysStiffness(wheel, sidewaysStiffness);
             }
         }

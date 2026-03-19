@@ -619,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4e54187d3eab2334a875d4442d409088, type: 2}
     - target: {fileID: 2094017711285509830, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2299695667617040249, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -663,7 +663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3154113689187803905, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4379797491191527660, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_Enabled
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7032787602554729529, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7563977809117877749, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -739,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783001994069519705, guid: 3fec159409243044ca96ff385253039e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

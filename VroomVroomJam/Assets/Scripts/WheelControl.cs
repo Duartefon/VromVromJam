@@ -42,7 +42,7 @@ public class WheelControl : MonoBehaviour
         {
             WheelCollider.GetGroundHit(out WheelHit hit);
             skidMark.transform.position = hit.point + Vector3.up * 0.02f;
-            skidMark.transform.rotation = Quaternion.identity;
+            skidMark.transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal); ;
         }
 
         HandleSkidEffects();
