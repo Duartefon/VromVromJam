@@ -1285,8 +1285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8713872042d8c499c64366a0eb198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryZone
-  zoneType: 0
-  zoneID: entrega1
+  zoneType: 1
+  zoneID: ' '
   requiredStopTime: 1
   stopSpeedThreshold: 0.5
 --- !u!65 &348938130
@@ -3321,7 +3321,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Zona de Entrega
 
-    Ficar parado 1 segundo (estacionar)  para receber
+    Ficar parado 1 segundo (estacionar)  para entregar
     os itens'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
