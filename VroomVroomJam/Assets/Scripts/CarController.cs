@@ -29,6 +29,11 @@ public class CarControl : MonoBehaviour
     public float forwardStiffness = 2f;
     public float sidewaysStiffness = 2f;
     public float brakeSidewaysStiffness = 2.5f;
+    [Header("Fuel ")]
+ 
+    private bool hasFuel = true;
+    
+    public float CurrentForwardSpeed => rigidBody != null ? Vector3.Dot(transform.forward, rigidBody.linearVelocity) : 0f;
 
     [Header("Audio")]
     public AudioSource engineAudio;
@@ -128,7 +133,7 @@ public class CarControl : MonoBehaviour
             }
             else
             {
-                if (wheel.motorized)
+                if (wheel.motorized && hasFuel)
                     wheel.WheelCollider.motorTorque = vInput * currentMotorTorque;
 
                 // engine braking when coasting
@@ -207,5 +212,10 @@ public class CarControl : MonoBehaviour
         impactAudio.pitch = Random.Range(0.9f, 1.1f);
         impactAudio.volume = Mathf.Clamp01(impactForce / 20f);
         impactAudio.Play();
+    }
+    
+    public void SetHasFuel(bool state)
+    {
+        hasFuel = state;
     }
 }
