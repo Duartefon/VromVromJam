@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PizzaBoxDeliverable
       objectReference: {fileID: 0}
+    - target: {fileID: 6937591487197796277, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
+      propertyPath: m_Mass
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7553967555354885066, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
