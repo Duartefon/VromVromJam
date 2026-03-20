@@ -15,6 +15,10 @@ public class LicensePlate : MonoBehaviour
     {
         plateRenderer = GameObject.Find("LicensePlate").GetComponent<Renderer>();
         mat = plateRenderer.material;
+
+        Instance = this;
+        SetPlateText(CurrentPlateText);
+
         if(inputField != null)
         {
             inputField.onValueChanged.AddListener(OnTextChanged);
