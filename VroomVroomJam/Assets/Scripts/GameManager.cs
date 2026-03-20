@@ -18,7 +18,12 @@ public class GameManager : MonoBehaviour
     public void Play()
     {
         // carregar a cena do jogo
-        Debug.Log("Play button clicked! Starting the game...");
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void Exit()
+    {
+        // sair do jogo
+        Application.Quit();
     }
 }
