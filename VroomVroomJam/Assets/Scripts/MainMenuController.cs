@@ -30,6 +30,11 @@ public class MainMenuController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("NameSelectScreen");
+        }
+
         carCamera.transform.RotateAround(carTarget.transform.position, Vector3.up, orbitSpeed * Time.deltaTime);
         sceneryCamera.transform.Translate(Vector3.forward * slideSpeed * Time.deltaTime);
     }
