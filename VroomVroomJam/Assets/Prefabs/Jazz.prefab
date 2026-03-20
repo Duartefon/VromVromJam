@@ -385,11 +385,11 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 10000
     damper: 5000
-    targetPosition: 0.5
+    targetPosition: 0.3
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_WheelDampingRate: 0.1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -455,7 +455,7 @@ Transform:
   m_GameObject: {fileID: 1110518721548992792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 5, z: -1.079}
+  m_LocalPosition: {x: -0.25, y: 1.77, z: -1.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -487,13 +487,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210959112083452112}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0.9572167, y: 0.12788995, z: 0.03437566, w: -0.2572912}
   m_LocalPosition: {x: 5.146421, y: 1.2946601, z: 3.1427987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2979946315588213949}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 210.09, y: 0, z: -15.22}
 --- !u!198 &1055273730964386794
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -630,7 +630,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -684,7 +684,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5849056, g: 0.49561635, b: 0.36142755, a: 1}
+      maxColor: {r: 0.2735849, g: 0.078720175, b: 0.08787936, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5377,11 +5377,11 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 10000
     damper: 5000
-    targetPosition: 0.62
-  m_SuspensionDistance: 0.3
+    targetPosition: 0.3
+  m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0
   m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_WheelDampingRate: 0.1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -5612,11 +5612,11 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 10000
     damper: 5000
-    targetPosition: 0.5
+    targetPosition: 0.3
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_WheelDampingRate: 0.1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -5825,13 +5825,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4084664691191370797}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0.9572167, y: 0.12788995, z: 0.03437566, w: -0.2572912}
   m_LocalPosition: {x: 5.146421, y: 1.2946599, z: 5.1558876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6155680632783213574}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 210.09, y: 0, z: -15.22}
 --- !u!198 &2800145657875668713
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5968,7 +5968,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6022,7 +6022,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5849056, g: 0.49561635, b: 0.36142755, a: 1}
+      maxColor: {r: 0.2735849, g: 0.078720175, b: 0.08787936, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10865,13 +10865,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5888040864671240236}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0.9572167, y: 0.12788995, z: 0.03437566, w: -0.2572912}
   m_LocalPosition: {x: 3.906421, y: 1.2946601, z: 5.1797986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8477196705985738501}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 210.09, y: 0, z: -15.22}
 --- !u!198 &2885915543362995768
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -11008,7 +11008,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -11062,7 +11062,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5849056, g: 0.49561635, b: 0.36142755, a: 1}
+      maxColor: {r: 0.2735849, g: 0.078720175, b: 0.08787936, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -16003,7 +16003,7 @@ MonoBehaviour:
   centreOfGravityOffset: -1
   linearDamping: 1
   angularDamping: 2
-  downforce: 25
+  downforce: 15
   forwardStiffness: 2
   sidewaysStiffness: 2
   brakeSidewaysStiffness: 2.5
@@ -16234,11 +16234,11 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 10000
     damper: 5000
-    targetPosition: 0.62
-  m_SuspensionDistance: 0.3
+    targetPosition: 0.3
+  m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0
   m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_WheelDampingRate: 0.1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -16305,13 +16305,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7883100075316165431}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0.9572167, y: 0.12788995, z: 0.03437566, w: -0.2572912}
   m_LocalPosition: {x: 3.906421, y: 1.2946601, z: 3.1428003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5175740192757912335}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 210.09, y: 0, z: -15.22}
 --- !u!198 &4414761721241087097
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -16448,7 +16448,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -16502,7 +16502,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5849056, g: 0.49561635, b: 0.36142755, a: 1}
+      maxColor: {r: 0.2735849, g: 0.078720175, b: 0.08787936, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

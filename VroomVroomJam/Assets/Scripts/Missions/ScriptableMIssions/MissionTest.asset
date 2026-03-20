@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd6c86a5b8854e44889fda828298217, type: 3}
   m_Name: MissionTest
   m_EditorClassIdentifier: Assembly-CSharp::Missions.Mission
-  missionName: Unnamed Fetch Quest
+  missionName: Deliver boxes to Mr.Pizza
   location:
     originID: pickup1
     destinationID: entrega1
@@ -27,6 +27,10 @@ MonoBehaviour:
     state: 0
     deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
   - itemType: 1
-    price: 4.93
+    price: 200
+    state: 0
+    deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
+  - itemType: 1
+    price: 200
     state: 0
     deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
