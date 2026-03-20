@@ -10,27 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dd6c86a5b8854e44889fda828298217, type: 3}
-  m_Name: MissionTest
+  m_Name: Mission3
   m_EditorClassIdentifier: Assembly-CSharp::Missions.Mission
-  missionName: Deliver boxes to Mr.Pizza
+  missionName: Deliver the misterious box to the top of the mountain
   location:
     originID: pickup1
     destinationID: entrega1
-  duration: 120
+  duration: 180
   ordersToBeDelivered:
   - itemType: 0
-    price: 100
-    state: 0
-    deliverableModel: {fileID: 5477863758085314984, guid: 53affa19f906d194a8de72a1315ef54e, type: 3}
-  - itemType: 1
-    price: 200
-    state: 0
-    deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
-  - itemType: 1
-    price: 200
-    state: 0
-    deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
-  - itemType: 1
-    price: 200
+    price: 5000
     state: 0
     deliverableModel: {fileID: 9161321692099554588, guid: 0648ddaf9ab1215499d5a512dfa1ba9f, type: 3}
