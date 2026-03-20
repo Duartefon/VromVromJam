@@ -16033,6 +16033,9 @@ MonoBehaviour:
   brakeTorque: 3000
   handbrakeTorque: 5000
   maxSpeed: 20
+  engineBraking: 0.3
+  airAngularDrag: 0.5
+  jumpStabilization: 2
   steeringRange: 45
   steeringRangeAtMaxSpeed: 20
   steerSmoothing: 3
@@ -16043,6 +16046,14 @@ MonoBehaviour:
   forwardStiffness: 2
   sidewaysStiffness: 2
   brakeSidewaysStiffness: 2.5
+  engineAudio: {fileID: 0}
+  impactAudio: {fileID: 0}
+  impactClips: []
+  minPitch: 0.5
+  maxPitch: 2.5
+  minVolume: 0.4
+  maxVolume: 1
+  impactThreshold: 10
   wheelIndex: 0
   handbrakeButton: 22
 --- !u!1 &6861712029397935802
@@ -25992,7 +26003,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8298827661419975332}
-  m_Mesh: {fileID: 7597525368514554473, guid: 967c8aa5c3dea194ab298a24f8140f2a, type: 3}
+  m_Mesh: {fileID: 7597525368514554473, guid: 890b8c19b695f4c418fa4eea95bcf420, type: 3}
 --- !u!23 &1770030082683231068
 MeshRenderer:
   m_ObjectHideFlags: 0

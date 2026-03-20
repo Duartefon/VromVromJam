@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public void Play()
     {
         // carregar a cena do jogo
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("DuarteScene");
     }
 
     public void Exit()
