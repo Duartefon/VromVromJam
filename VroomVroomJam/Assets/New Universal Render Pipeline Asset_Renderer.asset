@@ -54,3 +54,19 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &6932550184372108539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37068d32e363a2341a89b93236f37c02, type: 3}
+  m_Name: PixelationRendererFeature
+  m_EditorClassIdentifier: Assembly-CSharp::PixelationRendererFeature
+  m_Active: 1
+  shader: {fileID: 4800000, guid: 58e5e043efbecb246bddcb4a8259e49c, type: 3}
+  material: {fileID: 0}
+  pixelSize: 39
