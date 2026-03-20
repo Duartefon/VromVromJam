@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Missions.Mission
   missionName: Deliver supplies to the shop
   location:
-    originID: pickup1
-    destinationID: entrega1
+    originID: 1
+    destinationID: 1
   duration: 60
   ordersToBeDelivered:
   - itemType: 0
