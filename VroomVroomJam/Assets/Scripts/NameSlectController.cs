@@ -8,7 +8,7 @@ public class NameEntryController : MonoBehaviour
 
     private string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    private int[] letterIndexes = new int[4];
+    private int[] letterIndexes = new int[7];
 
     private int activeSlot = 0;
 
@@ -29,7 +29,7 @@ public class NameEntryController : MonoBehaviour
 
             UpdateScreen();
 
-            if (activeSlot > 3)
+            if (activeSlot > 6)
             {
                 StartGame();
             }
@@ -58,7 +58,7 @@ public class NameEntryController : MonoBehaviour
 
     void UpdateScreen()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 7; i++)
         {
             if (i <= activeSlot)
             {
@@ -82,7 +82,7 @@ public class NameEntryController : MonoBehaviour
     {
         string playerName = "";
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 7; i++)
         {
             playerName += letterSlots[i].text;
         }
