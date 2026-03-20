@@ -17,6 +17,6 @@ public class HUDManager : MonoBehaviour
     void Update()
     {
         titleText.text = missionManager.currentMissionAsset.missionName;
-        payText.text = $"{missionManager.currentMissionAsset.TotalReward}";
+        payText.text = $"Pay: {missionManager.currentMissionAsset.TotalReward}$";
     }
 }

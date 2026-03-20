@@ -1339,6 +1339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c57090ae5b2f75499ab7a02151b9b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDManager
+  titleText: {fileID: 1794476484}
+  payText: {fileID: 1007787213}
+  missionManager: {fileID: 839909669}
 --- !u!1 &598015839
 GameObject:
   m_ObjectHideFlags: 0
