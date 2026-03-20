@@ -3,6 +3,9 @@ using TMPro;
 
 public class LicensePlate : MonoBehaviour
 {
+    public static LicensePlate Instance { get; private set; }
+    public static string CurrentPlateText { get; private set; } = "0000000"; // funciona como singleton para guardar a 
+                                                                            // placa atual e ser acessada por outros scripts
     public Renderer plateRenderer;
     public TMP_InputField inputField;
     private Material mat;
@@ -28,6 +31,7 @@ public class LicensePlate : MonoBehaviour
     public void SetPlateText(string text)
     {
         text = text.ToUpper();
+        CurrentPlateText = text;
         for (int i = 0; i < 7; i++)
         {
             char c = i < text.Length ? text[i] : '0';
