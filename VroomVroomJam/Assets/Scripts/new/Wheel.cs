@@ -26,6 +26,11 @@ public class Wheel : MonoBehaviour
     [Header("Mesh")]
     public Transform wheelMesh;
 
+    [Header("Skid")]
+    public ParticleSystem skidParticles;
+    public float skidThreshold = 3f;
+    public float skidSpinThreshold = 8f;
+
     private float maxLength, minLength, springLength;
     private float previousSpringLength;
     private float springForce;
@@ -35,10 +40,12 @@ public class Wheel : MonoBehaviour
     private float damperForce;
     private float wheelAngle;
     private float wheelSpinAngle;
+    private bool isGrounded;
 
     void Start()
     {
         rb = transform.parent.GetComponent<Rigidbody>();
+        skidParticles = GetComponentInChildren<ParticleSystem>();
 
         minLength = restLength - springTravel;
         maxLength = restLength + springTravel;
@@ -54,6 +61,8 @@ public class Wheel : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
+            isGrounded = true;
+
             UpdateSuspension(hit);
             UpdateWheelVelocity(hit);
 
@@ -90,7 +99,51 @@ public class Wheel : MonoBehaviour
 
             ApplyDownforce();
             UpdateWheelMesh();
+            UpdateSkidParticles(hit, sidewaysVel, forwardVel, accelInput);
         }
+        else
+        {
+            isGrounded = false;
+            StopSkid();
+        }
+    }
+
+    void UpdateSkidParticles(RaycastHit hit, float sidewaysVel, float forwardVel, float accelInput)
+    {
+        if (skidParticles == null) return;
+
+        bool lateralSkid = Mathf.Abs(sidewaysVel) > skidThreshold;
+        bool spinSkid = Mathf.Abs(accelInput) > 0.8f && Mathf.Abs(forwardVel) < skidSpinThreshold;
+
+        if (lateralSkid || spinSkid)
+        {
+            skidParticles.transform.position = hit.point;
+
+            Vector3 wheelBack = -(Quaternion.AngleAxis(wheelAngle, transform.up) * transform.forward);
+            skidParticles.transform.rotation = Quaternion.LookRotation(wheelBack, hit.normal);
+
+            float slipIntensity = Mathf.Max(
+                Mathf.InverseLerp(skidThreshold, skidThreshold * 3f, Mathf.Abs(sidewaysVel)),
+                Mathf.InverseLerp(0f, skidSpinThreshold, Mathf.Abs(forwardVel))
+            );
+
+            var emission = skidParticles.emission;
+            emission.rateOverTime = Mathf.Lerp(10f, 60f, slipIntensity);
+
+            if (!skidParticles.isPlaying)
+                skidParticles.Play();
+        }
+        else
+        {
+            StopSkid();
+        }
+    }
+
+    void StopSkid()
+    {
+        if (skidParticles == null) return;
+        if (skidParticles.isPlaying)
+            skidParticles.Stop();
     }
 
     void UpdateWheelMesh()
