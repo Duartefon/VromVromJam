@@ -22,6 +22,7 @@ public class Wheel : MonoBehaviour
     public float steerTime = 10f;
     public float tireGrip = 750f;
     public Position position;
+    public float brakeForceMultiplier = 1.5f; // quantas vezes mais forte é comparado ao motor
 
     [Header("Mesh")]
     public Transform wheelMesh;
@@ -98,6 +99,7 @@ public class Wheel : MonoBehaviour
             );
 
             ApplyDownforce();
+            ApplyBrake(forwardDir, forwardVel);
             UpdateWheelMesh();
             UpdateSkidParticles(hit, sidewaysVel, forwardVel, accelInput);
         }
@@ -236,6 +238,20 @@ public class Wheel : MonoBehaviour
 
         Vector3 downforce = -transform.up * speed * speed * 5f * downforceFactor;
         rb.AddForce(downforce);
+    }
+
+    void ApplyBrake(Vector3 forwardDir, float forwardVel)
+    {
+        float brakeInput = CarInput.GetBrakeInput();
+        if (brakeInput < 0.1f) return;
+
+        float brakeForceMag = brakeInput * motorForce * brakeForceMultiplier;
+        Vector3 brakeForce = -forwardDir * Mathf.Sign(forwardVel) * brakeForceMag;
+
+        rb.AddForceAtPosition(brakeForce, transform.position);
+
+        if (rb.linearVelocity.magnitude < 2f)
+            rb.linearVelocity *= 1f - brakeInput * 0.2f;
     }
 
     void OnDrawGizmos()

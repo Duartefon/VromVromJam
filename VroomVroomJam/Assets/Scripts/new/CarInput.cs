@@ -20,4 +20,9 @@ public class CarInput : MonoBehaviour
     {
         return instance.carControls.Car.Movement.ReadValue<Vector2>();
     }
+
+    public static float GetBrakeInput()
+    {
+        return instance.carControls.Car.Brake.ReadValue<float>();
+    }
 }
