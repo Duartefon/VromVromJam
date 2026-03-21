@@ -5,9 +5,9 @@ public class NewCarController : MonoBehaviour
     public Wheel[] wheels;
 
     [Header("Car Settings")]
-    public float wheelBase; // metros
-    public float rearTrackWidth; // metros
-    public float turnRadius; // metros
+    public float wheelBase = 2.1f; // metros
+    public float rearTrackWidth = 1.2f; // metros
+    public float turnRadius = 9f; // metros
 
     private float ackermanAngleLeft, ackermanAngleRight;
 

@@ -5,7 +5,6 @@ using System;
 public class Timer : MonoBehaviour
 {
     public Image timerFill;
-    public float duration;
     public Color startColor = Color.white;
     public Color middleColor = new Color(1f, 0.5f, 0f);
     public Color endColor = Color.red;
@@ -17,6 +16,7 @@ public class Timer : MonoBehaviour
     private bool running;
     private bool warningPlayed;
     private AudioSource audioSource;
+    private float duration;
 
     void Start()
     {
@@ -53,8 +53,9 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void StartTimer()
+    public void StartTimer(float duration = 60f)
     {
+        this.duration = duration;
         elapsed = 0f;
         running = true;
         warningPlayed = false;

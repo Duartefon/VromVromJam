@@ -39,4 +39,9 @@ public class ArrowScript : MonoBehaviour
 
         arrowRenderer.material.color = color;
     }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
 }

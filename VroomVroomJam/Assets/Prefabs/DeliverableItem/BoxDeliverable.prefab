@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5713746531033210713, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.264
       objectReference: {fileID: 0}
     - target: {fileID: 5713746531033210713, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.339
       objectReference: {fileID: 0}
     - target: {fileID: 5713746531033210713, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.189
       objectReference: {fileID: 0}
     - target: {fileID: 5713746531033210713, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,13 +48,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5780758140578275059, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
+      propertyPath: stickDownForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780758140578275059, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
+      propertyPath: attractionForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6135695554916625859, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
       propertyPath: m_Name
       value: BoxDeliverable
       objectReference: {fileID: 0}
     - target: {fileID: 6937591487197796277, guid: 2320b8f406974fe4ea9f25f20006c160, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

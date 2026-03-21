@@ -16,9 +16,11 @@ namespace Missions
         [Header("Timer")]
         public Timer timer;
 
+        [Header("Arrow")]
+        public ArrowScript arrow;
+
         [SerializeField] private List<Deliverable> activeOrders = new List<Deliverable>();
-        
-        // NEW: Track the spawned physical GameObjects by their order index
+
         private Dictionary<int, GameObject> spawnedDeliverables = new Dictionary<int, GameObject>();
 
         // --- EVENT BUS SUBSCRIPTIONS ---
@@ -47,7 +49,8 @@ namespace Missions
 
             currentMissionAsset = mission;
             activeOrders.Clear();
-            spawnedDeliverables.Clear(); // Ensure the dictionary is empty on start
+            spawnedDeliverables.Clear();
+            
 
             foreach (var order in mission.ordersToBeDelivered)
             {
@@ -58,11 +61,17 @@ namespace Missions
 
             isMissionActive = true;
 
-            if (timer != null)
+            /*if (timer != null)
             {
                 timer.duration = mission.duration;
                 timer.OnTimerComplete += HandleTimerExpired;
                 timer.StartTimer();
+            }*/
+
+            if (arrow != null)
+            {
+                //Transform pickupTarget = arranjar maneira de encontrar o transform do sitio
+                //arrow.SetTarget(pickupTarget);
             }
 
             Debug.Log($"Mission Loaded: {mission.missionName} | Time Limit: {mission.duration}s | Head to: {mission.location.originID}");
@@ -96,6 +105,12 @@ namespace Missions
                     }
                 }
                 Debug.Log($"Goods collected! Now head to: {currentMissionAsset.location.destinationID}");
+
+                if (arrow != null)
+                {
+                    //Transform destinationTarget = arranjar maneira de encontrar o transform do sitio
+                    //arrow.SetTarget(destinationTarget);
+                }
             }
         }
 
@@ -198,7 +213,6 @@ namespace Missions
             Debug.Log("Mission Failed! Goods were destroyed.");
         }
 
-        // --- TIMER HELPERS ---
         private void HandleTimerExpired()
         {
             if (!isMissionActive) return;

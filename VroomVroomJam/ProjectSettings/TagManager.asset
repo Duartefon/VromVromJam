@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LicensePlate
   - Ground
+  - Bed
+  - Arrow
   layers:
   - Default
   - TransparentFX

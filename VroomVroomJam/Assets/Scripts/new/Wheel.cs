@@ -13,8 +13,8 @@ public class Wheel : MonoBehaviour
     [Header("Suspension")]
     public float restLength = 0.45f;
     public float springTravel = 0.15f;
-    public float springStiffness = 30_000f;
-    public float damperStiffness = 4_000f;
+    public float springStiffness = 30_000f; // para o carro ficar bouncy, usar um valor alto tipo 50k
+    public float damperStiffness = 4_000f;  // em combinação com um dampening menor, tipo 2k
 
     [Header("Wheel")]
     public float wheelRadius = 0.25f;
@@ -56,6 +56,8 @@ public class Wheel : MonoBehaviour
     void Update()
     {
         UpdateWheelRotation();
+
+        //Debug.Log($"Is Grounded: {isGrounded}");
     }
 
     void FixedUpdate()
@@ -102,6 +104,11 @@ public class Wheel : MonoBehaviour
             ApplyBrake(forwardDir, forwardVel);
             UpdateWheelMesh();
             UpdateSkidParticles(hit, sidewaysVel, forwardVel, accelInput);
+
+            if (!isGrounded)
+            {
+                // controlar o carro no ar
+            }
         }
         else
         {
@@ -130,7 +137,7 @@ public class Wheel : MonoBehaviour
             );
 
             var emission = skidParticles.emission;
-            emission.rateOverTime = Mathf.Lerp(10f, 60f, slipIntensity);
+            //emission.rateOverTime = Mathf.Lerp(10f, 60f, slipIntensity);
 
             if (!skidParticles.isPlaying)
                 skidParticles.Play();
@@ -213,7 +220,12 @@ public class Wheel : MonoBehaviour
 
     Vector3 CalculateTurnAssist(Vector3 forwardDir, float sidewaysVel)
     {
-        return forwardDir * Mathf.Abs(sidewaysVel) * 50f;
+        float speed = rb.linearVelocity.magnitude;
+        float speedFactor = Mathf.InverseLerp(20f, 0f, speed);
+
+        float turnStrength = Mathf.Lerp(20f, 120f, speedFactor);
+
+        return forwardDir * Mathf.Abs(sidewaysVel) * turnStrength;
     }
 
     Vector3 CalculateAlignForce(Vector3 rightDir, float sidewaysVel)
