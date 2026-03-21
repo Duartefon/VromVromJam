@@ -44,4 +44,15 @@ public class ArrowScript : MonoBehaviour
     {
         target = newTarget;
     }
+
+    public void Disable()
+    {
+        target = null;
+        gameObject.SetActive(false);
+    }
+
+    public void Enable()
+    {
+        gameObject.SetActive(true);
+    }
 }

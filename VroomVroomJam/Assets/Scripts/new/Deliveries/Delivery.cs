@@ -7,6 +7,7 @@ public class Delivery : ScriptableObject
     public string deliveryName;
     public float deliveryDuration;
     public Cargo[] cargo;
+    public bool isCompleted;
 
     private float totalPayment;
 

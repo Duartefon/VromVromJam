@@ -60,6 +60,8 @@ public class DeliveryManager : MonoBehaviour
 
         state = State.GoingToPickup;
 
+        timer.StartTimer(currentDelivery.deliveryDuration);
+
         Zone pickup = GetZone(currentDelivery, Zone.Type.Pickup);
         Zone deliver = GetZone(currentDelivery, Zone.Type.Delivery);
 
@@ -95,8 +97,6 @@ public class DeliveryManager : MonoBehaviour
         {
             timer.StopTimer();
 
-            state = State.Idle;
-
             float payment = currentDelivery.GetTotalPayment();
             Debug.Log($"Delivery completed! Payment: {payment}");
 
@@ -104,6 +104,9 @@ public class DeliveryManager : MonoBehaviour
             {
                 //hudManager.UpdatePaymentDisplay(payment);
             }
+
+            // adicionar entrega ao array de entregas completadas
+            currentDelivery.isCompleted = true;
 
             // ao acabar a entrega, escolher uma nova entrega aleatoria
             ChooseRandomDelivery();
@@ -113,9 +116,15 @@ public class DeliveryManager : MonoBehaviour
 
     private void ChooseRandomDelivery()
     {
-        if (deliveries.Length == 0) return;
-
-        int randomIndex = Random.Range(0, deliveries.Length);
-        currentDelivery = deliveries[randomIndex];
+        var available = System.Array.FindAll(deliveries, d => !d.isCompleted);
+        if (available.Length == 0)
+        {
+            Debug.Log("All deliveries completed!");
+            arrow.Disable();
+            return;
+        } 
+        
+        arrow.Enable();
+        currentDelivery = available[Random.Range(0, available.Length)];
     }
 }
