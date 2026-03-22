@@ -4,7 +4,7 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
-    public TMP_Text titleText, payText;
+    public TMP_Text titleText, payText, playerMoneyText;
     public DeliveryManager deliveryManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +23,13 @@ public class HUDManager : MonoBehaviour
         } else
         {
             titleText.text = deliveryManager.CurrentDelivery.deliveryName;
-            payText.text = deliveryManager.CurrentDelivery.GetTotalPayment() + "$";
+            payText.text = deliveryManager.GetCurrentPayment() + "$";
         }
+
+    }
+
+    public void UpdateMoneyDisplay(float money)
+    {
+        playerMoneyText.text = money + "$";
     }
 }
