@@ -49,7 +49,7 @@ public class DeliveryManager : MonoBehaviour
     {
         if (currentDelivery == null) return;
 
-        if ((GetCurrentCargo().Count == 0 && state == State.Delivering) || timer.IsTimeUp())
+        //if ((GetCurrentCargo().Count == 0 && state == State.Delivering) || timer.IsTimeUp())
         {
             // se o player perder a cargo toda ou se o tempo acabar, falha a entrega
             //FailDelivery(); //TODO

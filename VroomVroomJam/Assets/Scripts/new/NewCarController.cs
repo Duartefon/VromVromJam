@@ -11,9 +11,14 @@ public class NewCarController : MonoBehaviour
 
     private float ackermanAngleLeft, ackermanAngleRight;
 
+    [Header("Textures")]
+    public Texture2D brakeLightsOff;
+    public Texture2D brakeLightsOn;
+    public Renderer carRenderer;
+
     void Start()
     {
-        
+        if(carRenderer != null) carRenderer.material.SetTexture("_MainTex", brakeLightsOff);
     }
 
     void Update()
@@ -46,5 +51,21 @@ public class NewCarController : MonoBehaviour
             else if(wheel.position == Wheel.Position.FrontRight)
                 wheel.steeringAngle = ackermanAngleRight;
         }
+
+        UpdateBrakeLights();
+    }
+
+    private bool _isBraking = false;
+
+    private void UpdateBrakeLights()
+    {
+        bool braking = CarInput.GetBrakeInput() > 0;
+        Debug.Log($"Brake Input: {CarInput.GetBrakeInput()} - Braking: {braking}");
+
+        if (braking == _isBraking) return;
+        _isBraking = braking;
+
+        if (carRenderer != null)
+            carRenderer.material.SetTexture("_BaseMap", braking ? brakeLightsOn : brakeLightsOff);
     }
 }

@@ -3645,6 +3645,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1823385680514904058, guid: 2886341ed2ea5104790e6fc63da9c598, type: 3}
+      propertyPath: carRenderer
+      value: 
+      objectReference: {fileID: 5370781256298516140}
+    - target: {fileID: 1823385680514904058, guid: 2886341ed2ea5104790e6fc63da9c598, type: 3}
+      propertyPath: brakeLightsOn
+      value: 
+      objectReference: {fileID: 2800000, guid: 345cbfc2ab7e8364a81550769edceb29, type: 3}
+    - target: {fileID: 1823385680514904058, guid: 2886341ed2ea5104790e6fc63da9c598, type: 3}
+      propertyPath: brakeLightsOff
+      value: 
+      objectReference: {fileID: 2800000, guid: 8ba401211e622e14ba380d8eb451ed9b, type: 3}
     - target: {fileID: 2302633241288430391, guid: 2886341ed2ea5104790e6fc63da9c598, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -3778,6 +3790,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307245a5b17bcf84fa5ed9644c53490d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+--- !u!23 &5370781256298516140 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 915746811709678186, guid: 2886341ed2ea5104790e6fc63da9c598, type: 3}
+  m_PrefabInstance: {fileID: 5370781256298516137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5783922787459656617
 PrefabInstance:
   m_ObjectHideFlags: 0
