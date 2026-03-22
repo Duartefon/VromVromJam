@@ -5,7 +5,7 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
     public TMP_Text titleText, payText;
-    public MissionManager missionManager;
+    public DeliveryManager deliveryManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +16,14 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        titleText.text = missionManager.currentMissionAsset.missionName;
-        payText.text = $"Pay: {missionManager.currentMissionAsset.TotalReward}$";
+        if(deliveryManager.CurrentDelivery == null)
+        {
+            titleText.text = "No Delivery";
+            payText.text = "0$";
+        } else
+        {
+            titleText.text = deliveryManager.CurrentDelivery.deliveryName;
+            payText.text = deliveryManager.CurrentDelivery.GetTotalPayment() + "$";
+        }
     }
 }

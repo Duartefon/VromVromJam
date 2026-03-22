@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Delivery
   deliveryName: Help Mr. Pizza
   deliveryDuration: 90
-  cargo: []
+  cargoData:
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
+  - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
   isCompleted: 0

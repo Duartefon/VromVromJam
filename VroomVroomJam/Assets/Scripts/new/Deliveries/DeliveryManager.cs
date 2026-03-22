@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 
 public class DeliveryManager : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class DeliveryManager : MonoBehaviour
     public ArrowScript arrow;
     public Delivery[] deliveries;
     public HUDManager hudManager;
+    public Transform dropPosition;
 
+    [Header("Settings")]
+    public float cargoSpawnInterval = 0.3f;
 
     private Delivery currentDelivery;
     public Delivery CurrentDelivery => currentDelivery;
@@ -16,19 +20,24 @@ public class DeliveryManager : MonoBehaviour
     private enum State { Idle, GoingToPickup, GoingToDeliver }
     private State state = State.Idle;
     private Zone[] zones;
-    
+
     void Start()
     {
-        arrow = GameObject.FindWithTag("Arrow").GetComponent<ArrowScript>();
+        GameObject arrowObj = GameObject.FindWithTag("Arrow");
+        if (arrowObj != null)
+        {
+            arrow = arrowObj.GetComponent<ArrowScript>();
+            arrow.Enable();
+        }
+        else
+        {
+            Debug.LogWarning("Arrow object not found.");
+        }
+
         zones = FindObjectsByType<Zone>(FindObjectsSortMode.None);
 
         ChooseRandomDelivery();
         StartDelivery();
-    }
-
-    void Update()
-    {
-        
     }
 
     private Zone GetZone(Delivery delivery, Zone.Type type)
@@ -53,7 +62,6 @@ public class DeliveryManager : MonoBehaviour
         CompleteDelivery();
     }
 
-
     private void StartDelivery()
     {
         if (currentDelivery == null) return;
@@ -65,14 +73,16 @@ public class DeliveryManager : MonoBehaviour
         Zone pickup = GetZone(currentDelivery, Zone.Type.Pickup);
         Zone deliver = GetZone(currentDelivery, Zone.Type.Delivery);
 
-        if (pickup != null)  pickup.SetActive(true);
+        if (pickup != null) pickup.SetActive(true);
         if (deliver != null) deliver.SetActive(false);
 
         if (arrow != null && pickup != null)
             arrow.SetTarget(pickup.transform);
 
-        if (hudManager != null){}
-            //hudManager.UpdateDeliveryDetails(currentDelivery);
+        if (hudManager != null)
+        {
+            // hudManager.UpdateMissionDisplay(currentDelivery);
+        }
     }
 
     private void DoPickup()
@@ -80,38 +90,36 @@ public class DeliveryManager : MonoBehaviour
         if (currentDelivery == null) return;
 
         state = State.GoingToDeliver;
-
         Zone pickup = GetZone(currentDelivery, Zone.Type.Pickup);
         Zone deliver = GetZone(currentDelivery, Zone.Type.Delivery);
 
-        if (pickup != null)  pickup.SetActive(false);
+        StartCoroutine(WaitForCargo(pickup, deliver));
+    }
+
+    private IEnumerator WaitForCargo(Zone pickup, Zone deliver)
+    {
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(SpawnCargo(currentDelivery));
+
+        if (pickup != null) pickup.SetActive(false);
         if (deliver != null) deliver.SetActive(true);
 
         if (arrow != null && deliver != null)
             arrow.SetTarget(deliver.transform);
+
+        if (hudManager != null)
+        {
+        }
     }
 
     private void CompleteDelivery()
     {
-        if (currentDelivery != null)
-        {
-            timer.StopTimer();
+        if (currentDelivery == null) return;
 
-            float payment = currentDelivery.GetTotalPayment();
-            Debug.Log($"Delivery completed! Payment: {payment}");
+        timer.StopTimer();
 
-            if (hudManager != null)
-            {
-                //hudManager.UpdatePaymentDisplay(payment);
-            }
-
-            // adicionar entrega ao array de entregas completadas
-            currentDelivery.isCompleted = true;
-
-            // ao acabar a entrega, escolher uma nova entrega aleatoria
-            ChooseRandomDelivery();
-            StartDelivery();
-        }
+        StartCoroutine(DeliverCargo(currentDelivery));
     }
 
     private void ChooseRandomDelivery()
@@ -120,11 +128,86 @@ public class DeliveryManager : MonoBehaviour
         if (available.Length == 0)
         {
             Debug.Log("All deliveries completed!");
-            arrow.Disable();
+            currentDelivery = null;
+            if (arrow != null) arrow.Disable();
             return;
-        } 
-        
+        }
+
         arrow.Enable();
         currentDelivery = available[Random.Range(0, available.Length)];
+    }
+
+    private IEnumerator SpawnCargo(Delivery delivery)
+    {
+        if (delivery.runtimeCargo == null)
+            delivery.runtimeCargo = new List<GameObject>();
+        else
+        {
+            foreach (var old in delivery.runtimeCargo)
+            {
+                if (old != null)
+                    Destroy(old);
+            }
+            delivery.runtimeCargo.Clear();
+        }
+
+        foreach (Cargo data in delivery.cargoData)
+        {
+            GameObject cargo = Instantiate(data.cargoPrefab, dropPosition.position, Quaternion.identity);
+
+            CargoBehaviour behaviour = cargo.GetComponent<CargoBehaviour>();
+            if (behaviour != null)
+            {
+                behaviour.cargoData = data;
+            }
+            else
+            {
+                Debug.LogWarning("Cargo prefab missing CargoBehaviour!");
+            }
+
+            delivery.runtimeCargo.Add(cargo);
+
+            yield return new WaitForSeconds(cargoSpawnInterval);
+        }
+    }
+
+    private IEnumerator DeliverCargo(Delivery delivery)
+    {
+        float totalPayment = 0f;
+
+        foreach (var cargo in delivery.runtimeCargo)
+        {
+            if (cargo == null) continue;
+
+            CargoBehaviour behaviour = cargo.GetComponent<CargoBehaviour>();
+
+            if (behaviour != null)
+            {
+                if (!behaviour.isBroken)
+                {
+                    totalPayment += behaviour.cargoData.value;
+                    Destroy(cargo, 1f);
+                }
+                else
+                {
+                    // fica sem pagamento, mas ainda é destruído
+                    Destroy(cargo, 1f);
+                }
+            }
+
+            yield return new WaitForSeconds(cargoSpawnInterval);
+        }
+
+        Debug.Log($"Delivery completed! Payment: {totalPayment}");
+
+        if (hudManager != null)
+        {
+            // hudManager.UpdatePaymentDisplay(totalPayment);
+        }
+
+        delivery.isCompleted = true;
+
+        ChooseRandomDelivery();
+        StartDelivery();
     }
 }

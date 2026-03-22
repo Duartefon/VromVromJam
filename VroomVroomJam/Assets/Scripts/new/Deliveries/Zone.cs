@@ -13,18 +13,18 @@ public class Zone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Zone entered. " + other.name + " in zone " + name + " other tag: " + other.tag);
+        //Debug.Log("Zone entered. " + other.name + " in zone " + name + " other tag: " + other.tag);
         if (!other.CompareTag("Player")) return;
-        Debug.Log("Player in zone. " + other.name);
+        //Debug.Log("Player in zone. " + other.name);
         if (delivery != deliveryManager.CurrentDelivery) return;
-        Debug.Log("Correct delivery.");
+        //Debug.Log("Correct delivery.");
         if (type == Type.Pickup)
         {
-            Debug.Log("Pickup reached.");
+            //Debug.Log("Pickup reached.");
             deliveryManager.OnPickupReached();
         }
         else if (type == Type.Delivery){
-            Debug.Log("Delivery reached.");
+            //Debug.Log("Delivery reached.");
             deliveryManager.OnDeliveryReached();
         }
     }
