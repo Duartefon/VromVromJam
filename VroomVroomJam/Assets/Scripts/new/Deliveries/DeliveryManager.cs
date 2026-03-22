@@ -45,6 +45,17 @@ public class DeliveryManager : MonoBehaviour
         StartDelivery();
     }
 
+    void Update()
+    {
+        if (currentDelivery == null) return;
+
+        if ((GetCurrentCargo().Count == 0 && state == State.Delivering) || timer.IsTimeUp())
+        {
+            // se o player perder a cargo toda ou se o tempo acabar, falha a entrega
+            //FailDelivery(); //TODO
+        }
+    }
+
     private Zone GetZone(Delivery delivery, Zone.Type type)
     {
         foreach (Zone zone in zones)

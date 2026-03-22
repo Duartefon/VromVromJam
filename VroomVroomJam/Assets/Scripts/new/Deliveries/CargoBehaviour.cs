@@ -9,14 +9,23 @@ public class CargoBehaviour : MonoBehaviour
     private float spawnTime;
     private bool hasBroken = false;
 
+    [Header("Audio Settings")]
+    public AudioClip[] boxSounds;
+    private AudioSource audioSource;
+
     void Start()
     {
         spawnTime = Time.time;
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (hasBroken) return;
+
+        audioSource.volume = Random.Range(0.3f, 0.7f);
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(boxSounds[Random.Range(0, boxSounds.Length)]);
 
         if (Time.time - spawnTime < breakDelay) return;
 
