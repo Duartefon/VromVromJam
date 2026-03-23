@@ -31,6 +31,7 @@ public class Wheel : MonoBehaviour
     public ParticleSystem skidParticles;
     public float skidThreshold = 3f;
     public float skidSpinThreshold = 8f;
+    public bool isSkidding;
 
     private float maxLength, minLength, springLength;
     private float previousSpringLength;
@@ -139,12 +140,15 @@ public class Wheel : MonoBehaviour
             var emission = skidParticles.emission;
             //emission.rateOverTime = Mathf.Lerp(10f, 60f, slipIntensity);
 
+            isSkidding = true;
+
             if (!skidParticles.isPlaying)
                 skidParticles.Play();
         }
         else
         {
             StopSkid();
+            isSkidding = false;
         }
     }
 
