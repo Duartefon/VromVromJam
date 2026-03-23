@@ -15,6 +15,7 @@ public class NewCarController : MonoBehaviour
     public Texture2D brakeLightsOff;
     public Texture2D brakeLightsOn;
     public Renderer carRenderer;
+    public GameObject brakeLightsCone;
 
     void Start()
     {
@@ -67,5 +68,14 @@ public class NewCarController : MonoBehaviour
 
         if (carRenderer != null)
             carRenderer.material.SetTexture("_BaseMap", braking ? brakeLightsOn : brakeLightsOff);
+
+        if(brakeLightsCone && braking)
+        {
+            brakeLightsCone.SetActive(true);
+        }
+        else 
+        {
+            brakeLightsCone.SetActive(false);
+        }
     }
 }

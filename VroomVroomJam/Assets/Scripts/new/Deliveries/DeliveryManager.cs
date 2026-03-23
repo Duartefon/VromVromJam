@@ -25,6 +25,7 @@ public class DeliveryManager : MonoBehaviour
     private Coroutine _spawnCoroutine;
     private Coroutine _deliverCoroutine;
     private Coroutine _waitForCargoCoroutine;
+    private bool isInPickupZone = false;
 
     void Start()
     {
@@ -122,11 +123,36 @@ public class DeliveryManager : MonoBehaviour
         _waitForCargoCoroutine = StartCoroutine(WaitForCargo(pickup, deliver));
     }
 
+    public void SetPlayerInPickupZone(bool value)
+    {
+        isInPickupZone = value;
+
+        // se o player sair, cancela tudo
+        if (!value)
+        {
+            if (_waitForCargoCoroutine != null)
+            {
+                StopCoroutine(_waitForCargoCoroutine);
+                _waitForCargoCoroutine = null;
+            }
+
+            if (_spawnCoroutine != null)
+            {
+                StopCoroutine(_spawnCoroutine);
+                _spawnCoroutine = null;
+            }
+
+            Debug.Log("Player left pickup zone, canceling cargo spawn.");
+        }
+    }
+
     private IEnumerator WaitForCargo(Zone pickup, Zone deliver)
     {
         yield return new WaitForSeconds(2f);
 
-        // Cancel any in-progress spawn before starting a new one
+        if (!isInPickupZone)
+            yield break;
+
         if (_spawnCoroutine != null)
         {
             StopCoroutine(_spawnCoroutine);
