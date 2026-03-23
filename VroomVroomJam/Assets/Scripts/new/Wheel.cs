@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Wheel : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public class Wheel : MonoBehaviour
     public float skidSpinThreshold = 8f;
     public bool isSkidding;
 
+    [Header("Camera")]
+    public CinemachineCamera mainCam;
+
     private float maxLength, minLength, springLength;
     private float previousSpringLength;
     private float springForce;
@@ -52,6 +56,8 @@ public class Wheel : MonoBehaviour
         minLength = restLength - springTravel;
         maxLength = restLength + springTravel;
         springLength = restLength;
+
+        mainCam = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineCamera>();
     }
 
     void Update()
@@ -90,6 +96,8 @@ public class Wheel : MonoBehaviour
             {
                 rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
             }
+
+            mainCam.Lens.FieldOfView = Mathf.Lerp(60f, 75f, currentSpeed / maxSpeed);
 
             rb.AddForceAtPosition(
                 suspensionForce
