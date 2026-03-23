@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.192
   cropToFit:
     m_OverrideState: 1
     m_Value: 1
@@ -34,13 +34,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.9751441, y: 0.9612945, z: 1, w: -0.016842095}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.07157896}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.029473683}
 --- !u!114 &-6488132086448344324
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -507,7 +507,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1.18
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
@@ -637,7 +637,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.259
+    m_Value: 0
   clamp:
     m_OverrideState: 1
     m_Value: 0.05
@@ -730,7 +730,7 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -12.5
   tint:
     m_OverrideState: 1
     m_Value: 0
@@ -758,13 +758,13 @@ MonoBehaviour:
     m_Value: 0
   greenOutRedIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -2.7
   greenOutGreenIn:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 76
   greenOutBlueIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 13.9
   blueOutRedIn:
     m_OverrideState: 1
     m_Value: 0
