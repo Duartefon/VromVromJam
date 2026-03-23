@@ -12,22 +12,36 @@ public class Zone : MonoBehaviour
     public enum Type { Pickup, Delivery }
 
     public void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
+        if (type == Type.Pickup)
         {
-            if (type == Type.Pickup)
-                deliveryManager.SetPlayerInPickupZone(true);
+            deliveryManager.SetPlayerInPickupZone(true);
+            deliveryManager.OnPickupReached();
+        }
+
+        if (type == Type.Delivery)
+        {
+            deliveryManager.OnDeliveryReached();
         }
     }
+}
 
     public void OnTriggerExit(Collider other)
+{
+    if (!other.CompareTag("Player")) return;
+
+    if (type == Type.Pickup)
     {
-        if (other.CompareTag("Player"))
-        {
-            if (type == Type.Pickup)
-                deliveryManager.SetPlayerInPickupZone(false);
-        }
+        deliveryManager.SetPlayerInPickupZone(false);
     }
+
+    if (type == Type.Delivery)
+    {
+        // deliveryManager.SetPlayerInDeliveryZone(false);
+    }
+}
 
     public void SetActive(bool active)
     {
