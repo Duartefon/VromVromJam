@@ -1,10 +1,11 @@
-using Missions;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
     public TMP_Text titleText, payText, playerMoneyText;
+    public Image accelBar, brakeBar;
     public DeliveryManager deliveryManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +26,9 @@ public class HUDManager : MonoBehaviour
             titleText.text = deliveryManager.CurrentDelivery.deliveryName;
             payText.text = deliveryManager.GetCurrentPayment() + "$";
         }
+
+        accelBar.fillAmount = Mathf.Lerp(accelBar.fillAmount, CarInput.GetMovementInput().y, Time.deltaTime * 20f);
+        brakeBar.fillAmount = Mathf.Lerp(brakeBar.fillAmount, CarInput.GetBrakeInput(), Time.deltaTime * 20f);
 
     }
 
