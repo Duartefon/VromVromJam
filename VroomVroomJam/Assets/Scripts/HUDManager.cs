@@ -27,7 +27,7 @@ public class HUDManager : MonoBehaviour
             payText.text = deliveryManager.GetCurrentPayment() + "$";
         }
 
-        accelBar.fillAmount = Mathf.Lerp(accelBar.fillAmount, CarInput.GetMovementInput().y, Time.deltaTime * 20f);
+        accelBar.fillAmount = Mathf.Lerp(accelBar.fillAmount, Mathf.Abs(CarInput.GetMovementInput().y), Time.deltaTime * 20f);
         brakeBar.fillAmount = Mathf.Lerp(brakeBar.fillAmount, CarInput.GetBrakeInput(), Time.deltaTime * 20f);
 
     }
@@ -35,5 +35,6 @@ public class HUDManager : MonoBehaviour
     public void UpdateMoneyDisplay(float money)
     {
         playerMoneyText.text = money + "$";
+        playerMoneyText.GetComponent<Animator>().SetTrigger("Bounce");
     }
 }

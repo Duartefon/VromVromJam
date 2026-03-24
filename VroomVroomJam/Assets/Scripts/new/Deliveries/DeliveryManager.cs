@@ -276,6 +276,7 @@ public class DeliveryManager : MonoBehaviour
             {
                 Player.instance.AddMoney(pay);
                 Debug.Log("Delivered cargo for " + pay + "$");
+                
                 if (hudManager != null)
                 {
                     hudManager.UpdateMoneyDisplay(Player.instance.GetMoney());

@@ -783,7 +783,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303055840}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9b947acfdf68d4848b0d742ab3da8c09, type: 2}
   m_CullingMode: 0
@@ -1285,6 +1285,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43e767806d3ea1a4b8c0ecab783c179e, type: 2}
   hudManager: {fileID: 558040913}
   dropPosition: {fileID: 855687736}
+  animateMoney: {fileID: 0}
   cargoSpawnInterval: 0.5
 --- !u!4 &522458246
 Transform:
@@ -1555,7 +1556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 850, y: 280}
+  m_AnchoredPosition: {x: 850, y: 300}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &711840894
@@ -2054,7 +2055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 850, y: 280}
+  m_AnchoredPosition: {x: 850, y: 300}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &990348794
@@ -2757,7 +2758,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 850, y: 150}
-  m_SizeDelta: {x: 50, y: 200}
+  m_SizeDelta: {x: 90, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133590277
 MonoBehaviour:
@@ -2857,7 +2858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9150943, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3175,7 +3176,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 850, y: 150}
-  m_SizeDelta: {x: 50, y: 200}
+  m_SizeDelta: {x: 90, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493294196
 MonoBehaviour:
@@ -3628,7 +3629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 41.3, y: 7.1}
+  m_AnchoredPosition: {x: 42.759995, y: 59.73}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1794476484
@@ -3651,7 +3652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deliver 3 boxes to Mr. Pizza
+  m_text: Mission Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 158f095f6e29882479d6d6e5d4ee943d, type: 2}
   m_sharedMaterial: {fileID: 8593597904006508336, guid: 158f095f6e29882479d6d6e5d4ee943d, type: 2}
@@ -3686,7 +3687,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
