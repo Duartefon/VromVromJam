@@ -20,15 +20,13 @@ public class ArrowScript : MonoBehaviour
         if (target == null) return;
 
         Vector3 direction = target.position - transform.position;
-        direction.y = 0f;
-
         if (direction == Vector3.zero) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         Quaternion smoothed = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-        transform.rotation = Quaternion.Euler(-90f, smoothed.eulerAngles.y, 0f);
+        transform.rotation = smoothed;
 
-        float distance = Vector3.Distance(transform.position, target.position);
+        float distance = direction.magnitude;
         float t = Mathf.Clamp01(distance / maxDistance);
 
         Color color;
@@ -39,7 +37,6 @@ public class ArrowScript : MonoBehaviour
 
         arrowRenderer.material.color = color;
     }
-
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
