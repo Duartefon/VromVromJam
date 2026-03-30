@@ -54,7 +54,7 @@ public class DeliveryManager : MonoBehaviour
         if ((GetCurrentCargo().Count == 0 && state == State.Delivering) || timer.IsTimeUp())
         {
             // se o player perder a cargo toda ou se o tempo acabar, falha a entrega
-            FailDelivery(); //TODO
+            FailDelivery(); //done
             failAnimator.Play("Fail");
         }
     }
