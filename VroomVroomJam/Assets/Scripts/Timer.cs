@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     public event Action OnTimerComplete;
 
     private float elapsed;
-    private bool running;
+    public bool running;
     private bool warningPlayed;
     private AudioSource audioSource;
     private float duration;
@@ -72,5 +72,10 @@ public class Timer : MonoBehaviour
     {
         Debug.Log("BOOM!");
         OnTimerComplete?.Invoke();
+    }
+
+    public bool IsTimeUp()
+    {
+        return elapsed >= duration;
     }
 }

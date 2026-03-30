@@ -10,6 +10,7 @@ public class DeliveryManager : MonoBehaviour
     public Delivery[] deliveries;
     public HUDManager hudManager;
     public Transform dropPosition;
+    public Animator failAnimator;
 
     [Header("Settings")]
     public float cargoSpawnInterval = 0.3f;
@@ -50,10 +51,11 @@ public class DeliveryManager : MonoBehaviour
     {
         if (currentDelivery == null) return;
 
-        //if ((GetCurrentCargo().Count == 0 && state == State.Delivering) || timer.IsTimeUp())
+        if ((GetCurrentCargo().Count == 0 && state == State.Delivering) || timer.IsTimeUp())
         {
             // se o player perder a cargo toda ou se o tempo acabar, falha a entrega
-            //FailDelivery(); //TODO
+            FailDelivery(); //TODO
+            failAnimator.Play("Fail");
         }
     }
 
@@ -321,5 +323,47 @@ public class DeliveryManager : MonoBehaviour
     {
         if (currentDelivery == null) return new List<GameObject>();
         return new List<GameObject>(currentDelivery.runtimeCargo);
+    }
+
+    private void FailDelivery()
+    {
+        if (currentDelivery == null) return;
+
+        if (_spawnCoroutine != null)
+        {
+            StopCoroutine(_spawnCoroutine);
+            _spawnCoroutine = null;
+        }
+        if (_deliverCoroutine != null)
+        {
+            StopCoroutine(_deliverCoroutine);
+            _deliverCoroutine = null;
+        }
+        if (_waitForCargoCoroutine != null)
+        {
+            StopCoroutine(_waitForCargoCoroutine);
+            _waitForCargoCoroutine = null;
+        }
+
+        foreach (var cargo in GetCurrentCargo())
+        {
+            if (cargo != null)
+                Destroy(cargo);
+        }
+        currentDelivery.runtimeCargo.Clear();
+
+        Zone pickup = GetZone(currentDelivery, Zone.Type.Pickup);
+        Zone deliver = GetZone(currentDelivery, Zone.Type.Delivery);
+        if (pickup != null) pickup.SetActive(false);
+        if (deliver != null) deliver.SetActive(false);
+
+        timer.StopTimer();
+
+        Debug.Log("Delivery failed!");
+
+        state = State.Idle;
+        currentDelivery.isCompleted = true;
+        ChooseRandomDelivery();
+        StartDelivery();
     }
 }
