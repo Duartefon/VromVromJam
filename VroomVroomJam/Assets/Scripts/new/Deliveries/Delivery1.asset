@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Delivery1
   m_EditorClassIdentifier: Assembly-CSharp::Delivery
   deliveryName: Deliver supplies to the shop
-  deliveryDuration: 90
+  deliveryDuration: 20
   cargoData:
   - {fileID: 11400000, guid: 752540bced6e6f345b76047873518a9f, type: 2}
   - {fileID: 11400000, guid: d81f66e5a08f4c34584905318c64deea, type: 2}
