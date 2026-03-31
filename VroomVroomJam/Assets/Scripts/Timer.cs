@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class Timer : MonoBehaviour
 {
     public Image timerFill;

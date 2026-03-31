@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class CargoBehaviour : MonoBehaviour
 {
@@ -7,10 +8,11 @@ public class CargoBehaviour : MonoBehaviour
     public float breakDelay = 0.2f;
     public Cargo cargoData;
     private float spawnTime;
-    private bool hasBroken = false;
+    public GameObject explosionPrefab;
 
     [Header("Audio Settings")]
     public AudioClip[] boxSounds;
+    public AudioClip explosionSound;
     private AudioSource audioSource;
 
     void Start()
@@ -21,7 +23,7 @@ public class CargoBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (hasBroken) return;
+        if (isBroken) return;
 
         audioSource.volume = Random.Range(0.3f, 0.7f);
         audioSource.pitch = Random.Range(0.9f, 1.1f);
@@ -37,12 +39,14 @@ public class CargoBehaviour : MonoBehaviour
 
     private void BreakCargo()
     {
-        hasBroken = true;
         isBroken = true;
-
+        Explode();
         Debug.Log("Cargo broken: " + gameObject.name);
-
-        // optional feedback
-        // GetComponent<Renderer>().material.color = Color.red;
     }
+
+    private void Explode()
+    {
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        audioSource.PlayOneShot(explosionSound);
+        Destroy(gameObject, 0.5f);}
 }

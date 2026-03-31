@@ -51,7 +51,9 @@ public class DeliveryManager : MonoBehaviour
     {
         if (currentDelivery == null) return;
 
-        if ((GetCurrentCargo().Count == 0 && state == State.Delivering) || timer.IsTimeUp())
+        if ((GetCurrentCargo().Count == 0 && 
+            (state == State.Delivering || state == State.GoingToDeliver )
+            && currentDelivery.runtimeCargo.Count > 0)  || timer.IsTimeUp())
         {
             // se o player perder a cargo toda ou se o tempo acabar, falha a entrega
             FailDelivery(); //done
@@ -322,7 +324,21 @@ public class DeliveryManager : MonoBehaviour
     private List<GameObject> GetCurrentCargo()
     {
         if (currentDelivery == null) return new List<GameObject>();
-        return new List<GameObject>(currentDelivery.runtimeCargo);
+        
+        List<GameObject> unbrokenCargo = new();
+
+        foreach (var cargo in currentDelivery.runtimeCargo)
+        {
+            if (cargo == null) continue;
+
+            CargoBehaviour behaviour = cargo.GetComponent<CargoBehaviour>();
+
+            if (behaviour != null && !behaviour.isBroken)
+            {
+                unbrokenCargo.Add(cargo);
+            }
+        }
+        return unbrokenCargo;
     }
 
     private void FailDelivery()
